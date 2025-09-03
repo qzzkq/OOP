@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'idea'
+}
+
+group = 'ru.nsu.kiryushin'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(24))
+    }
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}

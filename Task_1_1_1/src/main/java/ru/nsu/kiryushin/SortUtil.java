@@ -1,7 +1,7 @@
 package ru.nsu.kiryushin;
 
 /** Class for heap sort. */
-public class Main {
+public final class SortUtil {
     /**
      * heapSort.
      *
@@ -9,7 +9,7 @@ public class Main {
      *
      * @return sorted array
      */
-    static int[] heapSort(int[] arr) {
+    public static int[] heapSort(int[] arr) {
         int n = arr.length;
         // build max-heap
         for (int i = n / 2 - 1; i >= 0; --i) {
@@ -34,7 +34,7 @@ public class Main {
      *
      * @param n heap size
      */
-    static void heapify(int[] arr, int i, int n) {
+    private static void heapify(int[] arr, int i, int n) {
         int largest = i;
         int left = 2 * i + 1;
         int right = 2 * i + 2;

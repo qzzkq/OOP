@@ -7,9 +7,22 @@ plugins {
 group = 'ru.nsu.kiryushin'
 version = '1.0-SNAPSHOT'
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(24))
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
     }
 }
 

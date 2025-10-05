@@ -96,4 +96,50 @@ public class PlayerTest {
         String expected = "[6 Крести (6), 7 Бубны (7)] ==> 13";
         assertEquals(expected, player.getStringHandPlayer());
     }
+
+    @Test
+    void Test7() {
+        Player player = new Player(new Card(9, 0), new Card(12, 1));
+        assertEquals(21, player.getSumHand());
+        String expected = "[Туз Черви (11), Король Пики (10)] ==> 21";
+        assertEquals(expected, player.getStringHandPlayer());
+    }
+
+    @Test
+    void Test8() {
+        Player player = new Player(new Card(9, 0), new Card(9, 1));
+        player.addCard(new Card(7, 2));
+        assertEquals(21, player.getSumHand());
+        String expected = "[Туз Черви (11), Туз Пики (1), 9 Бубны (9)] ==> 21";
+        assertEquals(expected, player.getStringHandPlayer());
+    }
+
+    @Test
+    void Test9() {
+        Player player = new Player(new Card(9, 0), new Card(8, 3));
+        player.addCard(new Card(9, 1));
+        player.addCard(new Card(9, 2));
+        assertEquals(13, player.getSumHand());
+        String expected = "[Туз Черви (1), 10 Крести (10), Туз Пики (1), Туз Бубны (1)] ==> 13";
+        assertEquals(expected, player.getStringHandPlayer());
+    }
+
+
+    @Test
+    void Test10() {
+        Player player = new Player(new Card(10, 0), new Card(11, 1));
+        assertEquals(20, player.getSumHand());
+        String expected = "[Валет Черви (10), Дама Пики (10)] ==> 20";
+        assertEquals(expected, player.getStringHandPlayer());
+    }
+
+    @Test
+    void Test11() {
+        Player player = new Player(new Card(8, 0), new Card(12, 1));
+        player.addCard(new Card(0, 2));
+        assertEquals(22, player.getSumHand());
+        String expected = "[10 Черви (10), Король Пики (10), 2 Бубны (2)] ==> 22";
+        assertEquals(expected, player.getStringHandPlayer());
+    }
+
 }

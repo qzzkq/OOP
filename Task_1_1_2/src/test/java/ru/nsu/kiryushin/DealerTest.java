@@ -112,4 +112,38 @@ public class DealerTest {
         String expected = "[6 Крести (6), 7 Бубны (7)] ==> 13";
         assertEquals(expected, dealer.getStringHandDealer());
     }
+
+    @Test
+    void Test8() {
+        Card c1 = new Card(4, 0);
+        Card c2 = new Card(7, 1);
+        Dealer dealer = new Dealer(c1, c2);
+        assertSame(c2, dealer.getCloseCard());
+    }
+
+    @Test
+    void Test9() {
+        Card c1 = new Card(9, 1);
+        Card c2 = new Card(4, 2);
+        Dealer dealer = new Dealer(c1, c2);
+        String expected = "[Туз Пики, <закрытая карта>]";
+        assertEquals(expected, dealer.getStringHandDealer());
+    }
+
+    @Test
+    void Test10() {
+        Dealer dealer = new Dealer(new Card(9, 0), new Card(9, 1));
+        dealer.addCard(new Card(7, 2));
+        dealer.changeState();
+        String expected = "[Туз Черви (11), Туз Пики (1), 9 Бубны (9)] ==> 21";
+        assertEquals(expected, dealer.getStringHandDealer());
+    }
+
+    @Test
+    void Test11() {
+        Dealer dealer = new Dealer(new Card(12, 1), new Card(9, 2));
+        dealer.changeState();
+        String expected = "[Король Пики (10), Туз Бубны (11)] ==> 21";
+        assertEquals(expected, dealer.getStringHandDealer());
+    }
 }

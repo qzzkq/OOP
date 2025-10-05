@@ -55,7 +55,7 @@ public class Game {
             System.out.println("Раунд " + round + "\n");
 
             int result = playRound(sc, deck);
-            switch (result){
+            switch (result) {
                 case 1:
                     System.out.println("Вы победили!\n");
                     ++winsPlayer;
@@ -68,13 +68,11 @@ public class Game {
                     ++winsDealer;
             }
             String whoLeader;
-            if (winsPlayer > winsDealer){
+            if (winsPlayer > winsDealer) {
                 whoLeader = " в вашу пользу";
-            }
-            else if (winsPlayer < winsDealer){
+            } else if (winsPlayer < winsDealer) {
                 whoLeader = " в пользу дилера";
-            }
-            else{
+            } else {
                 whoLeader = " - ничья";
             }
             System.out.println("Счет " + winsPlayer + ":" + winsDealer + whoLeader + "\n");
@@ -98,21 +96,19 @@ public class Game {
         sumPlayer = player.getSumHand();
         sumDealer = dealer.getSumHand();
 
-        if ((sumDealer == sumPlayer) && (sumDealer == 21)){
+        if ((sumDealer == sumPlayer) && (sumDealer == 21)) {
             dealer.changeState();
             System.out.println(showHands(dealer, player));
             System.out.println("Сумма карт у вас и у дилера равна 21. Блэкджек.");
             return 0;
-        }
-        else if (sumDealer == 21){
+        } else if (sumDealer == 21) {
             dealer.changeState();
             System.out.println(showHands(dealer, player));
             System.out.println("Сумма карт дилера равна 21. Блэкджек.");
             return -1;
-        }
-        else if (sumPlayer == 21){
+        } else if (sumPlayer == 21) {
             dealer.changeState();
-            System.out.println(showHands(dealer,player));
+            System.out.println(showHands(dealer, player));
             System.out.println("Сумма ваших карт равна 21. Блэкджек");
             return 1;
         }
@@ -120,11 +116,11 @@ public class Game {
         System.out.println(showHands(dealer, player));
         System.out.println("Ваш ход\n-------");
 
-        while (true){
+        while (true) {
             System.out.println("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться...");
             ans = read01(sc);
 
-            if (ans == 0){
+            if (ans == 0) {
                 break;
             }
 
@@ -133,11 +129,10 @@ public class Game {
             player.addCard(card);
             System.out.println(showHands(dealer, player));
             sumPlayer = player.getSumHand();
-            if (sumPlayer > 21){
+            if (sumPlayer > 21) {
                 System.out.println("Сумма карт больше 21.");
                 return -1;
-            }
-            else if (sumPlayer == 21){
+            } else if (sumPlayer == 21) {
                 System.out.println("Сумма карт равна 21. Ход переходит дилеру.\n");
                 break;
             }
@@ -148,28 +143,25 @@ public class Game {
         System.out.println("Дилер открывает закрытую карту " + (dealer.getCloseCard()).getCardName() + "\n");
         System.out.println(showHands(dealer, player));
         sumDealer = dealer.getSumHand();
-        while (sumDealer < 17){
+        while (sumDealer < 17) {
             waitEnter(sc, "Нажмите Enter, чтобы дилер взял следующую карту...");
             Card card = deck.getCard();
             System.out.println("Дилер открывает карту " + card.getCardName());
             dealer.addCard(card);
-            System.out.println(showHands(dealer,player));
+            System.out.println(showHands(dealer, player));
             sumDealer = dealer.getSumHand();
 
         }
-        if (sumDealer > 21){
+        if (sumDealer > 21) {
             System.out.println("У дилера перебор.");
             return 1;
-        }
-        else if (sumDealer == sumPlayer){
+        } else if (sumDealer == sumPlayer) {
             System.out.println("Очки равны.");
             return 0;
-        }
-        else if (sumDealer > sumPlayer){
+        } else if (sumDealer > sumPlayer) {
             System.out.println("Сумма очков дилера больше, чем ваша.");
             return -1;
-        }
-        else{
+        } else {
             System.out.println("Сумма ваших очков больше, чем у дилера.");
             return 1;
         }
@@ -195,7 +187,8 @@ public class Game {
     private int read01(Scanner sc) {
         while (true) {
             if (sc.hasNextInt()) {
-                int x = sc.nextInt(); sc.nextLine();
+                int x = sc.nextInt();
+                sc.nextLine();
                 if (x == 0 || x == 1) return x;
             } else {
                 sc.nextLine();
@@ -207,7 +200,7 @@ public class Game {
     /**
      * Message for starting a round: Enter to continue, 'q' to quit
      *
-     * @param sc     scanner
+     * @param sc      scanner
      * @param message to display
      * @return true to continue; false to quit
      */
@@ -215,21 +208,11 @@ public class Game {
         while (true) {
             System.out.println(message);
             String line = sc.nextLine().trim();
-
             if (line.isEmpty()) {
-                System.out.print("\033[F\033[2K");
-                System.out.print("\033[E\033[2K\r");
-                System.out.flush();
                 return true;
             } else if (line.equalsIgnoreCase("q")) {
-                System.out.print("\033[F\033[2K");
-                System.out.print("\033[E\033[2K\r");
-                System.out.flush();
                 return false;
             } else {
-                System.out.print("\033[F\033[2K");
-                System.out.print("\033[E\033[2K\r");
-                System.out.flush();
                 System.out.println("Введите только Enter для продолжения или 'q' для выхода.");
             }
         }
@@ -238,14 +221,17 @@ public class Game {
     /**
      * Simple “press Enter to continue” pause
      *
-     * @param sc     scanner
+     * @param sc      scanner
      * @param message message to display
      */
     private void waitEnter(Scanner sc, String message) {
-        System.out.println(message);
-        sc.nextLine();
-        System.out.print("\033[F\033[2K");
-        System.out.print("\033[E\033[2K\r");
-        System.out.flush();
+        while (true) {
+            System.out.println(message);
+            String line = sc.nextLine().trim();
+            if (line.isEmpty()) {
+                return;
+            }
+
+        }
     }
 }

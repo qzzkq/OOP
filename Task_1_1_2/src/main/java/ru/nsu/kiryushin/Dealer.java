@@ -22,8 +22,8 @@ public class Dealer extends Hand{
      * @param card1 first card
      * @param card2 second card
      */
-    public Dealer(Card c1, Card c2) {
-        super(c1, c2);
+    public Dealer(Card card1, Card card2) {
+        super(card1, card2);
     }
 
     /**
@@ -38,7 +38,7 @@ public class Dealer extends Hand{
     /**
      * Formats dealer's hand for display
      *
-     * @return string like "[...] ==> sum" or "[first, <закрытая карта>]"
+     * @return string format dealer's hand
      */
     public String getStringHandDealer(){
         ArrayList<String> handDealer = new ArrayList<String>();

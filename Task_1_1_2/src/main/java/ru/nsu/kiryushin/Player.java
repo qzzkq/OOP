@@ -13,8 +13,8 @@ public class Player extends Hand{
      * @param card1 first card
      * @param card2 second card
      */
-    public Player(Card c1, Card c2) {
-        super(c1, c2);
+    public Player(Card card1, Card card2) {
+        super(card1, card2);
     }
 
     /**

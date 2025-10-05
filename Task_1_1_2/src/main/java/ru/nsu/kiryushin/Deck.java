@@ -1,0 +1,52 @@
+package ru.nsu.kiryushin;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * Deck of playing cards composed of 1–8 standard 52-card packs.
+ */
+public class Deck {
+    private final List<Card> cards;
+
+    /**
+     * Constructs a deck
+     *
+     * @param numDecks number of 52-card packs
+     * @throws IllegalArgumentException if {@code numDecks} is outside 1..8
+     */
+    public Deck(int numDecks) {
+        if (numDecks < 1 || numDecks > 8) {
+            throw new IllegalArgumentException("Количество колод должно быть от 1 до 8 включительно!");
+        }
+        cards = new ArrayList<>(numDecks * 52);
+        for (int i = 0; i < numDecks; i++) {
+            for (int suit = 0; suit < 4; suit++) {
+                for (int rank = 0; rank < 13; rank++) {
+                    cards.add(new Card(rank, suit));
+                }
+            }
+        }
+        Collections.shuffle(cards);
+    }
+
+    /**
+     * Gets one card from the top of the deck.
+     *
+     * @return card from the top of the desk
+     */
+    public Card getCard() {
+        if (cards.isEmpty()) throw new java.util.NoSuchElementException("Колода пустая");
+        return cards.remove(cards.size()-1);
+    }
+
+    /**
+     * Returns the number of remaining cards in the deck.
+     *
+     * @return remaining cards count
+     */
+    public int size() {
+        return cards.size();
+    }
+}

@@ -53,18 +53,22 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="ru/nsu/kiryushin/Hand.html#addCard(ru.nsu.kiryushin.Card)" class="member-name-link">addCard(Card)</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Hand.html" title="class in ru.nsu.kiryushin">Hand</a></dt>
 <dd>
-<div class="block">Adds a card to the hand</div>
+<div class="block">Adds a card to the hand.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:C">C</h2>
 <dl class="index">
 <dt><a href="ru/nsu/kiryushin/Card.html" class="type-name-link" title="class in ru.nsu.kiryushin">Card</a> - Class in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
 <dd>
-<div class="block">Single playing card (rank 0..12, suit 0..3).</div>
+<div class="block">Single playing card with rank and suit indices.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/Card.html#%3Cinit%3E(int,int)" class="member-name-link">Card(int, int)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Card.html" title="class in ru.nsu.kiryushin">Card</a></dt>
+<dd>
+<div class="block">Creates a card.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Dealer.html#changeState()" class="member-name-link">changeState()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Dealer.html" title="class in ru.nsu.kiryushin">Dealer</a></dt>
 <dd>
-<div class="block">Marks that the player's turn is over</div>
+<div class="block">Marks that the player's turn is over.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:D">D</h2>
@@ -75,26 +79,26 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Dealer.html#%3Cinit%3E(ru.nsu.kiryushin.Card,ru.nsu.kiryushin.Card)" class="member-name-link">Dealer(Card, Card)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Dealer.html" title="class in ru.nsu.kiryushin">Dealer</a></dt>
 <dd>
-<div class="block">Creates a dealer's hand with two initial cards</div>
+<div class="block">Creates a dealer's hand with two initial cards.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Deck.html" class="type-name-link" title="class in ru.nsu.kiryushin">Deck</a> - Class in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
 <dd>
-<div class="block">Deck of playing cards composed of 1–8 standard 52-card packs.</div>
+<div class="block">Deck of playing cards composed of one to eight standard 52-card packs.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Deck.html#%3Cinit%3E(int)" class="member-name-link">Deck(int)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Deck.html" title="class in ru.nsu.kiryushin">Deck</a></dt>
 <dd>
-<div class="block">Constructs a deck</div>
+<div class="block">Constructs a deck.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
 <dt><a href="ru/nsu/kiryushin/Game.html#game()" class="member-name-link">game()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Game.html" title="class in ru.nsu.kiryushin">Game</a></dt>
 <dd>
-<div class="block">Starts the interactive game loop</div>
+<div class="block">Starts the interactive game loop.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Game.html" class="type-name-link" title="class in ru.nsu.kiryushin">Game</a> - Class in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
 <dd>
-<div class="block">Console Blackjack game</div>
+<div class="block">Console Blackjack game.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Game.html#%3Cinit%3E()" class="member-name-link">Game()</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Game.html" title="class in ru.nsu.kiryushin">Game</a></dt>
 <dd>&nbsp;</dd>
@@ -103,45 +107,51 @@ loadScripts(document, 'script');</script>
 <div class="block">Gets one card from the top of the deck.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Card.html#getCardName()" class="member-name-link">getCardName()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Card.html" title="class in ru.nsu.kiryushin">Card</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns a human-readable name of the card.</div>
+</dd>
 <dt><a href="ru/nsu/kiryushin/Dealer.html#getCloseCard()" class="member-name-link">getCloseCard()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Dealer.html" title="class in ru.nsu.kiryushin">Dealer</a></dt>
 <dd>
-<div class="block">Returns the dealer's hidden card</div>
+<div class="block">Returns the dealer's hidden card.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Hand.html#getHand()" class="member-name-link">getHand()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Hand.html" title="class in ru.nsu.kiryushin">Hand</a></dt>
 <dd>
 <div class="block">Returns the internal list of cards.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Card.html#getRankName()" class="member-name-link">getRankName()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Card.html" title="class in ru.nsu.kiryushin">Card</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the rank name.</div>
+</dd>
 <dt><a href="ru/nsu/kiryushin/Hand.html#getSoftAces()" class="member-name-link">getSoftAces()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Hand.html" title="class in ru.nsu.kiryushin">Hand</a></dt>
 <dd>
-<div class="block">Returns the number of soft Aces</div>
+<div class="block">Returns the number of soft Aces.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Dealer.html#getStringHandDealer()" class="member-name-link">getStringHandDealer()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Dealer.html" title="class in ru.nsu.kiryushin">Dealer</a></dt>
 <dd>
-<div class="block">Formats dealer's hand for display</div>
+<div class="block">Formats dealer's hand for display.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Player.html#getStringHandPlayer()" class="member-name-link">getStringHandPlayer()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Player.html" title="class in ru.nsu.kiryushin">Player</a></dt>
 <dd>
 <div class="block">Formats player's hand for display.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Card.html#getSuitName()" class="member-name-link">getSuitName()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Card.html" title="class in ru.nsu.kiryushin">Card</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Returns the suit name.</div>
+</dd>
 <dt><a href="ru/nsu/kiryushin/Hand.html#getSumHand()" class="member-name-link">getSumHand()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Hand.html" title="class in ru.nsu.kiryushin">Hand</a></dt>
 <dd>
-<div class="block">Computes the Blackjack total</div>
+<div class="block">Computes the Blackjack total.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Card.html#getValue()" class="member-name-link">getValue()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Card.html" title="class in ru.nsu.kiryushin">Card</a></dt>
 <dd>
-<div class="block">Blackjack value: 2–10 by face, J/Q/K=10, Ace=11</div>
+<div class="block">Blackjack value: 2–10 by face, face cards equal 10, Ace equals 11.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:H">H</h2>
 <dl class="index">
 <dt><a href="ru/nsu/kiryushin/Hand.html" class="type-name-link" title="class in ru.nsu.kiryushin">Hand</a> - Class in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
 <dd>
-<div class="block">Blackjack hand: stores cards and computes the hand total</div>
+<div class="block">Blackjack hand stores cards and computes the hand total.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Hand.html#%3Cinit%3E(ru.nsu.kiryushin.Card,ru.nsu.kiryushin.Card)" class="member-name-link">Hand(Card, Card)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Hand.html" title="class in ru.nsu.kiryushin">Hand</a></dt>
 <dd>
@@ -152,7 +162,7 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="ru/nsu/kiryushin/Main.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Main.html" title="class in ru.nsu.kiryushin">Main</a></dt>
 <dd>
-<div class="block">Launches the game</div>
+<div class="block">Launches the game.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Main.html" class="type-name-link" title="class in ru.nsu.kiryushin">Main</a> - Class in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
 <dd>
@@ -169,7 +179,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Player.html#%3Cinit%3E(ru.nsu.kiryushin.Card,ru.nsu.kiryushin.Card)" class="member-name-link">Player(Card, Card)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Player.html" title="class in ru.nsu.kiryushin">Player</a></dt>
 <dd>
-<div class="block">Returns a string a player's hand with two initial cards.</div>
+<div class="block">Creates a player's hand with two initial cards.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:R">R</h2>

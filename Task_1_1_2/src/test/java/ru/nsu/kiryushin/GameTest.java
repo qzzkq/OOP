@@ -4,18 +4,19 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
- * Test Game
+ * Tests for the {@link Game} class.
  */
-public class GameTest{
+public class GameTest {
     /**
-     * Test launch game
+     * Ensures the game can be launched and terminated immediately.
      */
     @Test
-    void Test0(){
+    void gameTerminatesAfterImmediateQuit() {
         ByteArrayInputStream input =
                 new ByteArrayInputStream(("1\nq\n").getBytes());
         ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -36,10 +37,10 @@ public class GameTest{
     }
 
     /**
-     * Test ending game
+     * Ensures the game handles multiple rounds before termination.
      */
     @Test
-    void Test1(){
+    void gameHandlesMultipleRoundsBeforeQuit() {
         StringBuilder sb = new StringBuilder();
         sb.append("1\n");
         sb.append("\n");

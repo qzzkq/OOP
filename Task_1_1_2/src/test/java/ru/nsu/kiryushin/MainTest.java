@@ -1,8 +1,8 @@
 package ru.nsu.kiryushin;
 
 /**
- * Test Main
+ * Placeholder tests for the {@link Main} class.
  */
-public class MainTest{
+public class MainTest {
 
 }

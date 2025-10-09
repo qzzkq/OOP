@@ -1,14 +1,15 @@
 package ru.nsu.kiryushin;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents the player's hand in Blackjack.
  */
-public class Player extends Hand{
+public class Player extends Hand {
 
     /**
-     * Returns a string a player's hand with two initial cards.
+     * Creates a player's hand with two initial cards.
      *
      * @param card1 first card
      * @param card2 second card
@@ -22,30 +23,31 @@ public class Player extends Hand{
      *
      * @return string like "[...] ==> sum"
      */
-    public String getStringHandPlayer(){
-        ArrayList<String> handPlayer = new ArrayList<String>();
-        String valueAce, stringCard, valueCard;
+    public String getStringHandPlayer() {
+        List<String> handPlayer = new ArrayList<>();
         int sum = this.getSumHand();
         int softAces = this.getSoftAces();
-        for (Card card : this.getHand()){
-            if (card.getRankName().equals("Туз")){
-                if (softAces > 0){
-                    valueAce = "11";
-                    --softAces;
-                }
-                else{
-                    valueAce = "1";
-                }
-                stringCard = card.getRankName() + " " + card.getSuitName() + " " + "(" + valueAce + ")";
-                handPlayer.add(stringCard);
-            }
-            else{
-                valueCard = String.valueOf(card.getValue());
-                stringCard = card.getRankName() + " " + card.getSuitName() + " " + "(" + valueCard + ")";
-                handPlayer.add(stringCard);
+        for (Card card : this.getHand()) {
+            handPlayer.add(cardString(card, softAces > 0));
+            if ("Туз".equals(card.getRankName()) && softAces > 0) {
+                softAces--;
             }
         }
-        return handPlayer.toString() + " ==> " + String.valueOf(sum);
+        return handPlayer.toString() + " ==> " + sum;
     }
 
+    /**
+     * Formats a single card for player output, taking into account soft Aces.
+     *
+     * @param card card to format
+     * @param softAce {@code true} if the Ace should count as 11
+     * @return formatted representation of the card
+     */
+    private String cardString(Card card, boolean softAce) {
+        if ("Туз".equals(card.getRankName())) {
+            String aceValue = softAce ? "11" : "1";
+            return card.getRankName() + " " + card.getSuitName() + " (" + aceValue + ")";
+        }
+        return card.getRankName() + " " + card.getSuitName() + " (" + card.getValue() + ")";
+    }
 }

@@ -1,18 +1,20 @@
 package ru.nsu.kiryushin;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 import org.junit.jupiter.api.Test;
 
 /**
- * Test Hand
+ * Tests for the {@link Hand} class.
  */
 public class HandTest {
 
     /**
-     * Test init Hand
+     * Verifies that the hand is initialized with the provided cards.
      */
     @Test
-    void Test0() {
+    void initHandCreatesHandWithCards() {
         Card c1 = new Card(0, 0);
         Card c2 = new Card(1, 1);
         Hand hand = new Hand(c1, c2);
@@ -23,29 +25,29 @@ public class HandTest {
     }
 
     /**
-     * Test getSumHand
+     * Checks that the hand sum is computed correctly without aces.
      */
     @Test
-    void Test1() {
+    void getSumHandReturnsSumForNonAceCards() {
         Hand hand = new Hand(new Card(6, 0), new Card(7, 1));
         assertEquals(17, hand.getSumHand());
     }
 
     /**
-     * Test getSumHand
+     * Checks that the hand sum considers multiple cards.
      */
     @Test
-    void Test2() {
+    void getSumHandReturnsSumForThreeCards() {
         Hand hand = new Hand(new Card(9, 0), new Card(7, 1));
         hand.addCard(new Card(3, 2));
         assertEquals(15, hand.getSumHand());
     }
 
     /**
-     * Test getSoftAces
+     * Ensures the count of soft aces is updated when the hand value changes.
      */
     @Test
-    void Test3() {
+    void getSoftAcesUpdatesWhenHandChanges() {
         Hand hand = new Hand(new Card(9, 0), new Card(5, 1));
         hand.getSumHand();
         assertEquals(1, hand.getSoftAces());
@@ -56,10 +58,10 @@ public class HandTest {
     }
 
     /**
-     * Test addCard
+     * Validates that adding a card updates the hand value and size.
      */
     @Test
-    void Test4() {
+    void addCardIncreasesHandSizeAndSum() {
         Hand hand = new Hand(new Card(8, 0), new Card(12, 1));
         assertEquals(20, hand.getSumHand());
 
@@ -69,10 +71,10 @@ public class HandTest {
     }
 
     /**
-     * Test getHand
+     * Ensures that the original cards remain accessible through getters.
      */
     @Test
-    void Test5() {
+    void getHandReturnsCardsInOrder() {
         Card c1 = new Card(2, 0);
         Card c2 = new Card(11, 3);
         Hand hand = new Hand(c1, c2);

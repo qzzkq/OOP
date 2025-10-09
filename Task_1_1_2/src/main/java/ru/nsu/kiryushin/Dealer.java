@@ -1,23 +1,24 @@
 package ru.nsu.kiryushin;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Dealer hand for Blackjack.
  */
-public class Dealer extends Hand{
+public class Dealer extends Hand {
 
     private boolean playerFinished = false;
 
     /**
-     * Marks that the player's turn is over
+     * Marks that the player's turn is over.
      */
-    public void changeState(){
+    public void changeState() {
         this.playerFinished = true;
     }
 
     /**
-     * Creates a dealer's hand with two initial cards
+     * Creates a dealer's hand with two initial cards.
      *
      * @param card1 first card
      * @param card2 second card
@@ -27,57 +28,51 @@ public class Dealer extends Hand{
     }
 
     /**
-     * Returns the dealer's hidden card
+     * Returns the dealer's hidden card.
      *
      * @return hidden card
      */
-    public Card getCloseCard(){
+    public Card getCloseCard() {
         return this.getHand().get(1);
     }
 
     /**
-     * Formats dealer's hand for display
+     * Formats dealer's hand for display.
      *
-     * @return string format dealer's hand
+     * @return string representation of dealer's hand
      */
-    public String getStringHandDealer(){
-        ArrayList<String> handDealer = new ArrayList<String>();
-        String valueAce, stringCard, valueCard;
-        if (playerFinished == false){
+    public String getStringHandDealer() {
+        List<String> handDealer = new ArrayList<>();
+        if (!playerFinished) {
             Card card = this.getHand().get(0);
-            if (card.getRankName().equals("Туз")){
-                stringCard = card.getRankName() + " " + card.getSuitName();
-            }
-            else{
-                valueCard = String.valueOf(card.getValue());
-                stringCard = card.getRankName() + " " + card.getSuitName() + " " + "(" + valueCard + ")";
-            }
-            handDealer.add(stringCard);
+            handDealer.add(openCardString(card, false));
             handDealer.add("<закрытая карта>");
             return handDealer.toString();
         }
-        else{
-            int sum = this.getSumHand();
-            int softAces = this.getSoftAces();
-            for (Card card : this.getHand()){
-                if (card.getRankName().equals("Туз")){
-                    if (softAces > 0){
-                        valueAce = "11";
-                        --softAces;
-                    }
-                    else{
-                        valueAce = "1";
-                    }
-                    stringCard = card.getRankName() + " " + card.getSuitName() + " " + "(" + valueAce + ")";
-                    handDealer.add(stringCard);
-                }
-                else{
-                    valueCard = String.valueOf(card.getValue());
-                    stringCard = card.getRankName() + " " + card.getSuitName() + " " + "(" + valueCard + ")";
-                    handDealer.add(stringCard);
-                }
+
+        int sum = this.getSumHand();
+        int softAces = this.getSoftAces();
+        for (Card card : this.getHand()) {
+            handDealer.add(openCardString(card, softAces > 0));
+            if ("Туз".equals(card.getRankName()) && softAces > 0) {
+                softAces--;
             }
-            return handDealer.toString() + " ==> " + String.valueOf(sum);
         }
+        return handDealer.toString() + " ==> " + sum;
+    }
+
+    /**
+     * Formats a single card for dealer output, taking into account soft Aces.
+     *
+     * @param card card to format
+     * @param softAce {@code true} if the Ace should count as 11
+     * @return formatted representation of the card
+     */
+    private String openCardString(Card card, boolean softAce) {
+        if ("Туз".equals(card.getRankName())) {
+            String aceValue = softAce ? "11" : "1";
+            return card.getRankName() + " " + card.getSuitName() + " (" + aceValue + ")";
+        }
+        return card.getRankName() + " " + card.getSuitName() + " (" + card.getValue() + ")";
     }
 }

@@ -1,59 +1,65 @@
 package ru.nsu.kiryushin;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.util.NoSuchElementException;
 
+import org.junit.jupiter.api.Test;
+
 /**
- * Test Deck
+ * Tests for the {@link Deck} class.
  */
-public class DeckTest{
+public class DeckTest {
     /**
-     * Test init Deck
+     * Verifies that a deck can be created with a valid number of decks.
      */
     @Test
-    void Test0(){
+    void deckInitializesWithValidDeckCount() {
         Deck deck = new Deck(1);
     }
 
     /**
-     * Test wrong init Deck
+     * Ensures an exception is thrown for invalid deck counts.
      */
     @Test
-    void Test1(){
-        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> new Deck(0));
+    void deckThrowsWhenDeckCountInvalid() {
+        IllegalArgumentException ex = assertThrows(
+                IllegalArgumentException.class,
+                () -> new Deck(0)
+        );
         assertEquals("Количество колод должно быть от 1 до 8 включительно!", ex.getMessage());
     }
 
     /**
-     * Tests for getting size
+     * Checks that the deck size matches the number of decks provided.
      */
     @Test
-    void Test2(){
-        for (int i=1; i < 9; ++i){
+    void deckSizeMatchesNumberOfDecks() {
+        for (int i = 1; i < 9; ++i) {
             Deck deck = new Deck(i);
-            assertEquals(i*52, deck.size());
+            assertEquals(i * 52, deck.size());
         }
     }
 
     @Test
-    void Test3(){
+    void deckDecreasesSizeWhenCardsAreDrawn() {
         int decks = 3;
         int size = 52;
         Deck deck = new Deck(decks);
-        for (int i = 0; i < decks*size; ++i){
-            assertEquals(deck.size(), decks*size-i);
+        for (int i = 0; i < decks * size; ++i) {
+            assertEquals(deck.size(), decks * size - i);
             deck.getCard();
         }
     }
 
     /**
-     * Test for getting card from empty deck
+     * Ensures drawing from an empty deck throws an exception.
      */
     @Test
-    void Test4(){
+    void deckThrowsWhenEmpty() {
         Deck deck = new Deck(1);
-        for (int i = 0; i < 52; ++i){
+        for (int i = 0; i < 52; ++i) {
             deck.getCard();
         }
         NoSuchElementException ex = assertThrows(NoSuchElementException.class, deck::getCard);

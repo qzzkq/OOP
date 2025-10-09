@@ -1,18 +1,20 @@
 package ru.nsu.kiryushin;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
 import org.junit.jupiter.api.Test;
 
 /**
- * Test Player
+ * Tests for the {@link Player} class.
  */
 public class PlayerTest {
 
     /**
-     * Test init Player
+     * Verifies that the player hand is initialized with the provided cards.
      */
     @Test
-    void Test0() {
+    void initPlayerCreatesHandWithCards() {
         Card c1 = new Card(0, 0);
         Card c2 = new Card(1, 1);
         Player player = new Player(c1, c2);
@@ -23,29 +25,29 @@ public class PlayerTest {
     }
 
     /**
-     * Test getSumHand
+     * Checks that the hand sum is computed correctly for two cards.
      */
     @Test
-    void Test1() {
+    void getSumHandReturnsSumForTwoCards() {
         Player player = new Player(new Card(6, 0), new Card(7, 1));
         assertEquals(17, player.getSumHand());
     }
 
     /**
-     * Test getSumHand
+     * Checks that the hand sum includes an additional card.
      */
     @Test
-    void Test2() {
+    void getSumHandReturnsSumForThreeCards() {
         Player player = new Player(new Card(9, 0), new Card(7, 1));
         player.addCard(new Card(3, 2));
         assertEquals(15, player.getSumHand());
     }
 
     /**
-     * Test getSoftAces
+     * Ensures the number of soft aces is recalculated after hand updates.
      */
     @Test
-    void Test3() {
+    void getSoftAcesRecalculatesAfterUpdates() {
         Player player = new Player(new Card(9, 0), new Card(5, 1));
         player.getSumHand();
         assertEquals(1, player.getSoftAces());
@@ -56,10 +58,10 @@ public class PlayerTest {
     }
 
     /**
-     * Test addCard
+     * Validates that adding a card updates the hand sum and size.
      */
     @Test
-    void Test4() {
+    void addCardUpdatesHandSumAndSize() {
         Player player = new Player(new Card(8, 0), new Card(12, 1));
         assertEquals(20, player.getSumHand());
 
@@ -69,10 +71,10 @@ public class PlayerTest {
     }
 
     /**
-     * Test getHand
+     * Ensures that cards are returned in the order they were dealt.
      */
     @Test
-    void Test5() {
+    void getHandReturnsCardsInOrder() {
         Card c1 = new Card(2, 0);
         Card c2 = new Card(11, 3);
         Player player = new Player(c1, c2);
@@ -88,25 +90,31 @@ public class PlayerTest {
     }
 
     /**
-     * Test getStringHandPlayer
+     * Confirms that the hand string is formatted correctly for simple hands.
      */
     @Test
-    void Test6() {
+    void getStringHandPlayerFormatsSimpleHands() {
         Player player = new Player(new Card(4, 3), new Card(5, 2));
         String expected = "[6 Крести (6), 7 Бубны (7)] ==> 13";
         assertEquals(expected, player.getStringHandPlayer());
     }
 
+    /**
+     * Ensures that the string output reflects blackjack hands.
+     */
     @Test
-    void Test7() {
+    void getStringHandPlayerDisplaysBlackjack() {
         Player player = new Player(new Card(9, 0), new Card(12, 1));
         assertEquals(21, player.getSumHand());
         String expected = "[Туз Черви (11), Король Пики (10)] ==> 21";
         assertEquals(expected, player.getStringHandPlayer());
     }
 
+    /**
+     * Ensures that soft aces are represented correctly in the string output.
+     */
     @Test
-    void Test8() {
+    void getStringHandPlayerHandlesSoftAces() {
         Player player = new Player(new Card(9, 0), new Card(9, 1));
         player.addCard(new Card(7, 2));
         assertEquals(21, player.getSumHand());
@@ -114,8 +122,11 @@ public class PlayerTest {
         assertEquals(expected, player.getStringHandPlayer());
     }
 
+    /**
+     * Checks that multiple aces are adjusted to avoid busting.
+     */
     @Test
-    void Test9() {
+    void getStringHandPlayerAdjustsMultipleAces() {
         Player player = new Player(new Card(9, 0), new Card(8, 3));
         player.addCard(new Card(9, 1));
         player.addCard(new Card(9, 2));
@@ -124,17 +135,22 @@ public class PlayerTest {
         assertEquals(expected, player.getStringHandPlayer());
     }
 
-
+    /**
+     * Verifies that high card hands are printed correctly.
+     */
     @Test
-    void Test10() {
+    void getStringHandPlayerPrintsHighCards() {
         Player player = new Player(new Card(10, 0), new Card(11, 1));
         assertEquals(20, player.getSumHand());
         String expected = "[Валет Черви (10), Дама Пики (10)] ==> 20";
         assertEquals(expected, player.getStringHandPlayer());
     }
 
+    /**
+     * Ensures that bust hands are represented with the correct sum.
+     */
     @Test
-    void Test11() {
+    void getStringHandPlayerShowsBustHands() {
         Player player = new Player(new Card(8, 0), new Card(12, 1));
         player.addCard(new Card(0, 2));
         assertEquals(22, player.getSumHand());

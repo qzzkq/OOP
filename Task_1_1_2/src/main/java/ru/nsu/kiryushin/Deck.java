@@ -3,22 +3,24 @@ package ru.nsu.kiryushin;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
- * Deck of playing cards composed of 1–8 standard 52-card packs.
+ * Deck of playing cards composed of one to eight standard 52-card packs.
  */
 public class Deck {
     private final List<Card> cards;
 
     /**
-     * Constructs a deck
+     * Constructs a deck.
      *
      * @param numDecks number of 52-card packs
      * @throws IllegalArgumentException if {@code numDecks} is outside 1..8
      */
     public Deck(int numDecks) {
         if (numDecks < 1 || numDecks > 8) {
-            throw new IllegalArgumentException("Количество колод должно быть от 1 до 8 включительно!");
+            throw new IllegalArgumentException(
+                    "Количество колод должно быть от 1 до 8 включительно!");
         }
         cards = new ArrayList<>(numDecks * 52);
         for (int i = 0; i < numDecks; i++) {
@@ -34,11 +36,13 @@ public class Deck {
     /**
      * Gets one card from the top of the deck.
      *
-     * @return card from the top of the desk
+     * @return card from the top of the deck
      */
     public Card getCard() {
-        if (cards.isEmpty()) throw new java.util.NoSuchElementException("Колода пустая");
-        return cards.remove(cards.size()-1);
+        if (cards.isEmpty()) {
+            throw new NoSuchElementException("Колода пустая");
+        }
+        return cards.remove(cards.size() - 1);
     }
 
     /**

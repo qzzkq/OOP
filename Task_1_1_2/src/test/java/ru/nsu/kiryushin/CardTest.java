@@ -1,50 +1,51 @@
 package ru.nsu.kiryushin;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 /**
- * Test Card
+ * Tests for the {@link Card} class.
  */
-public class CardTest{
+public class CardTest {
 
     /**
-     * Check getRankName
+     * Checks that the rank name is returned correctly.
      */
     @Test
-    void Test0(){
+    void getRankNameReturnsCorrectName() {
         String rank = "2";
         Card card = new Card(0, 0);
-        assertEquals(card.getRankName(), rank);
+        assertEquals(rank, card.getRankName());
     }
 
     /**
-     * Check getSuitName
+     * Checks that the suit name is returned correctly.
      */
     @Test
-    void Test1(){
+    void getSuitNameReturnsCorrectName() {
         String suit = "Пики";
-        Card card = new Card(5,1);
-        assertEquals(card.getSuitName(),suit);
+        Card card = new Card(5, 1);
+        assertEquals(suit, card.getSuitName());
     }
 
     /**
-     * Check card value
+     * Checks that the card value is returned correctly.
      */
     @Test
-    void Test2(){
+    void getValueReturnsCardValue() {
         int value = 4;
         Card card = new Card(2, 2);
         assertEquals(value, card.getValue());
     }
 
     /**
-     * Check human-readable name of card
+     * Checks that the human-readable card name is formatted correctly.
      */
     @Test
-    void Test3(){
+    void getCardNameReturnsFormattedName() {
         String expected = "Дама Пики (10)";
-        Card card = new Card(11,1);
-        assertEquals(card.getCardName(), expected);
+        Card card = new Card(11, 1);
+        assertEquals(expected, card.getCardName());
     }
 }

@@ -5,7 +5,7 @@ package ru.nsu.kiryushin;
  */
 public class Main {
     /**
-     * Launches the game
+     * Launches the game.
      */
     public static void main(String[] args) {
         Game game = new Game();

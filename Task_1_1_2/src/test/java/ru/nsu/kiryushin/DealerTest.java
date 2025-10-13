@@ -93,36 +93,36 @@ public class DealerTest {
      * Verifies that the dealer hand hides the second card before revealing.
      */
     @Test
-    void getStringHandDealerHidesCardBeforeReveal() {
+    void getHandStringHidesCardBeforeReveal() {
         Card c1 = new Card(4, 3);
         Card c2 = new Card(5, 2);
         Dealer dealer = new Dealer(c1, c2);
         String expected = "[6 Крести (6), <закрытая карта>]";
-        assertEquals(expected, dealer.getStringHandDealer());
+        assertEquals(expected, dealer.getHandString());
     }
 
     /**
      * Ensures that the dealer hand reveals all cards after changing state.
      */
     @Test
-    void getStringHandDealerRevealsCardsAfterStateChange() {
+    void getHandStringRevealsCardsAfterStateChange() {
         Card c1 = new Card(4, 3);
         Card c2 = new Card(5, 2);
         Dealer dealer = new Dealer(c1, c2);
-        dealer.changeState();
+        dealer.playerFinishedTurn();
         String expected = "[6 Крести (6), 7 Бубны (7)] ==> 13";
-        assertEquals(expected, dealer.getStringHandDealer());
+        assertEquals(expected, dealer.getHandString());
     }
 
     /**
      * Checks that the dealer exposes the correct close card.
      */
     @Test
-    void getCloseCardReturnsSecondCard() {
+    void getClosedCardReturnsSecondCard() {
         Card c1 = new Card(4, 0);
         Card c2 = new Card(7, 1);
         Dealer dealer = new Dealer(c1, c2);
-        assertSame(c2, dealer.getCloseCard());
+        assertSame(c2, dealer.getClosedCard());
     }
 
 
@@ -133,19 +133,19 @@ public class DealerTest {
     void getStringHandDealerShowsSumAfterReveal() {
         Dealer dealer = new Dealer(new Card(9, 0), new Card(9, 1));
         dealer.addCard(new Card(7, 2));
-        dealer.changeState();
+        dealer.playerFinishedTurn();
         String expected = "[Туз Черви (11), Туз Пики (1), 9 Бубны (9)] ==> 21";
-        assertEquals(expected, dealer.getStringHandDealer());
+        assertEquals(expected, dealer.getHandString());
     }
 
     /**
      * Verifies that blackjack hands are displayed correctly after revealing.
      */
     @Test
-    void getStringHandDealerDisplaysBlackjack() {
+    void getHandStringDisplaysBlackjack() {
         Dealer dealer = new Dealer(new Card(12, 1), new Card(9, 2));
-        dealer.changeState();
+        dealer.playerFinishedTurn();
         String expected = "[Король Пики (10), Туз Бубны (11)] ==> 21";
-        assertEquals(expected, dealer.getStringHandDealer());
+        assertEquals(expected, dealer.getHandString());
     }
 }

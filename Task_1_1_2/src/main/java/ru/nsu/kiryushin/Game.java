@@ -21,7 +21,7 @@ public class Game {
         int totalCards = 52 * numDeck;
         int round = 1;
 
-        Deck deck = new Deck(numDeck);
+        Deck deck = Deck.create(numDeck);
         while (true) {
             deck = ensureDeckHasCards(numDeck, totalCards, deck);
 
@@ -69,12 +69,12 @@ public class Game {
     private Deck ensureDeckHasCards(int numDeck, int totalCards, Deck deck) {
         if (numDeck == 1) {
             if (deck.size() < 22) {
-                return new Deck(numDeck);
+                return Deck.create(numDeck);
             }
         } else {
             int cutRemaining = (int) Math.round(totalCards * 0.25);
             if (deck.size() <= cutRemaining) {
-                return new Deck(numDeck);
+                return Deck.create(numDeck);
             }
         }
         return deck;
@@ -136,17 +136,17 @@ public class Game {
         sumDealer = dealer.getSumHand();
 
         if (sumDealer == sumPlayer && sumDealer == 21) {
-            dealer.changeState();
+            dealer.playerFinishedTurn();
             System.out.println(showHands(dealer, player));
             System.out.println("Сумма карт у вас и у дилера равна 21. Блэкджек.");
             return 0;
         } else if (sumDealer == 21) {
-            dealer.changeState();
+            dealer.playerFinishedTurn();
             System.out.println(showHands(dealer, player));
             System.out.println("Сумма карт дилера равна 21. Блэкджек.");
             return -1;
         } else if (sumPlayer == 21) {
-            dealer.changeState();
+            dealer.playerFinishedTurn();
             System.out.println(showHands(dealer, player));
             System.out.println("Сумма ваших карт равна 21. Блэкджек.");
             return 1;
@@ -178,9 +178,9 @@ public class Game {
         }
         System.out.println("Ход дилера\n----------");
         waitEnter(sc, "Нажмите Enter, чтобы дилер открыл закрытую карту...");
-        dealer.changeState();
+        dealer.playerFinishedTurn();
         System.out.println(
-                "Дилер открывает закрытую карту " + dealer.getCloseCard().getCardName() + "\n");
+                "Дилер открывает закрытую карту " + dealer.getClosedCard().getCardName() + "\n");
         System.out.println(showHands(dealer, player));
         sumDealer = dealer.getSumHand();
         while (sumDealer < 17) {
@@ -218,7 +218,7 @@ public class Game {
                 + "Ваши карты: "
                 + player.getStringHandPlayer()
                 + "\n    Карты дилера: "
-                + dealer.getStringHandDealer()
+                + dealer.getHandString()
                 + "\n";
     }
 

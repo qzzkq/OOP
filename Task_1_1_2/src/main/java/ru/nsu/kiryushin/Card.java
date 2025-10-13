@@ -1,26 +1,12 @@
 package ru.nsu.kiryushin;
 
+import static ru.nsu.kiryushin.Constants.RANKS;
+import static ru.nsu.kiryushin.Constants.SUITS;
+
 /**
  * Single playing card with rank and suit indices.
  */
 public class Card {
-    private static final String[] SUITS = {"Черви", "Пики", "Бубны", "Крести"};
-    private static final String[] RANKS = {
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "Туз",
-        "Валет",
-        "Дама",
-        "Король"
-    };
-
     private final int rank;
     private final int suit;
 

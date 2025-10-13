@@ -8,12 +8,15 @@ import java.util.List;
  */
 public class Dealer extends Hand {
 
+    /**
+     * Player turn is over. (Player stop drawing cards)
+     */
     private boolean playerFinished = false;
 
     /**
      * Marks that the player's turn is over.
      */
-    public void changeState() {
+    public void playerFinishedTurn() {
         this.playerFinished = true;
     }
 
@@ -32,7 +35,7 @@ public class Dealer extends Hand {
      *
      * @return hidden card
      */
-    public Card getCloseCard() {
+    public Card getClosedCard() {
         return this.getHand().get(1);
     }
 
@@ -41,7 +44,7 @@ public class Dealer extends Hand {
      *
      * @return string representation of dealer's hand
      */
-    public String getStringHandDealer() {
+    public String getHandString() {
         List<String> handDealer = new ArrayList<>();
         if (!playerFinished) {
             Card card = this.getHand().get(0);
@@ -58,7 +61,7 @@ public class Dealer extends Hand {
                 softAces--;
             }
         }
-        return handDealer.toString() + " ==> " + sum;
+        return handDealer + " ==> " + sum;
     }
 
     /**

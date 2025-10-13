@@ -11,26 +11,31 @@ import java.util.NoSuchElementException;
 public class Deck {
     private final List<Card> cards;
 
+    private Deck(int numDecks) {
+        cards = new ArrayList<>(numDecks * 52);
+    }
+
     /**
      * Constructs a deck.
      *
      * @param numDecks number of 52-card packs
      * @throws IllegalArgumentException if {@code numDecks} is outside 1..8
      */
-    public Deck(int numDecks) {
+    public static Deck create(int numDecks) {
         if (numDecks < 1 || numDecks > 8) {
             throw new IllegalArgumentException(
                     "Количество колод должно быть от 1 до 8 включительно!");
         }
-        cards = new ArrayList<>(numDecks * 52);
+        Deck deck = new Deck(numDecks);
         for (int i = 0; i < numDecks; i++) {
             for (int suit = 0; suit < 4; suit++) {
                 for (int rank = 0; rank < 13; rank++) {
-                    cards.add(new Card(rank, suit));
+                    deck.cards.add(new Card(rank, suit));
                 }
             }
         }
-        Collections.shuffle(cards);
+        Collections.shuffle(deck.cards);
+        return deck;
     }
 
     /**

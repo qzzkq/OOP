@@ -16,7 +16,7 @@ public class DeckTest {
      */
     @Test
     void deckInitializesWithValidDeckCount() {
-        Deck deck = new Deck(1);
+        Deck deck = Deck.create(1);
     }
 
     /**
@@ -26,7 +26,7 @@ public class DeckTest {
     void deckThrowsWhenDeckCountInvalid() {
         IllegalArgumentException ex = assertThrows(
                 IllegalArgumentException.class,
-                () -> new Deck(0)
+                () -> Deck.create(0)
         );
         assertEquals("Количество колод должно быть от 1 до 8 включительно!", ex.getMessage());
     }
@@ -37,7 +37,7 @@ public class DeckTest {
     @Test
     void deckSizeMatchesNumberOfDecks() {
         for (int i = 1; i < 9; ++i) {
-            Deck deck = new Deck(i);
+            Deck deck = Deck.create(i);
             assertEquals(i * 52, deck.size());
         }
     }
@@ -46,7 +46,7 @@ public class DeckTest {
     void deckDecreasesSizeWhenCardsAreDrawn() {
         int decks = 3;
         int size = 52;
-        Deck deck = new Deck(decks);
+        Deck deck = Deck.create(decks);
         for (int i = 0; i < decks * size; ++i) {
             assertEquals(deck.size(), decks * size - i);
             deck.getCard();
@@ -58,7 +58,7 @@ public class DeckTest {
      */
     @Test
     void deckThrowsWhenEmpty() {
-        Deck deck = new Deck(1);
+        Deck deck = Deck.create(1);
         for (int i = 0; i < 52; ++i) {
             deck.getCard();
         }

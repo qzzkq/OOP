@@ -38,11 +38,12 @@ public class ExpressionsTest {
      */
     @Test
     void testDiv() {
-        Expression exp = new Div(new Variable("x"), new Number(4));
+        Expression exp = new Div(new Number(4), new Variable("x"));
 
-        assertEquals("(x/4)", exp.toString());
-        assertEquals(2, exp.eval("x = 8; y = 400"));
-        assertEquals("(((1*4)-(x*0))/(4*4))", exp.derivative("x").toString());
+        assertEquals("(4/x)", exp.toString());
+        assertEquals(2, exp.eval("x = 2; y = 400"));
+        assertThrows(ArithmeticException.class, () -> exp.eval("x = 0; y = 400"));
+        assertEquals("(((0*x)-(4*1))/(x*x))", exp.derivative("x").toString());
     }
 
     /**

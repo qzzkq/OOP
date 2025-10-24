@@ -56,4 +56,30 @@ public class ExpressionsTest {
         assertEquals(0, exp.eval("x = 2; y = 2"));
         assertEquals("(((1*y)+(x*0))-0)", exp.derivative("x").toString());
     }
+
+    /**
+     * Test Variable.
+     */
+    @Test
+    void testVariable() {
+        Expression exp = new Variable("x");
+
+        assertEquals("x", exp.toString());
+        assertEquals(2, exp.eval("x = 2"));
+        assertThrows(IllegalArgumentException.class, () -> exp.eval("y = 2"));
+        assertEquals("1", exp.derivative("x").toString());
+    }
+
+    /**
+     * Test Add.
+     */
+    @Test
+    void testAdd(){
+        Expression exp = new Add(new Variable("x"), new Variable("y"));
+
+        assertEquals("(x+y)", exp.toString());
+        assertEquals(1200, exp.eval("x = 1000; y = 200"));
+        assertEquals("(1+0)", exp.derivative("x").toString());
+    }
+
 }

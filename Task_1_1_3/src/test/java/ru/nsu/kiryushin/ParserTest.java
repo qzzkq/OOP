@@ -1,6 +1,8 @@
 package ru.nsu.kiryushin;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -45,7 +47,7 @@ public class ParserTest{
      * Test parse Expression with unary minus.
      */
     @Test
-    void parseTestUnaryMinus(){
+    void parseTestUnaryMinus() {
         Expression expression = new Parser("-x").parse();
         assertEquals("(-1*x)", expression.toString());
     }
@@ -54,11 +56,9 @@ public class ParserTest{
      * Test parse with invalid character
      */
     @Test
-    void parseTestInvalidCharacter(){
+    void parseTestInvalidCharacter() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> new Parser("x & y").parse());
         assertTrue(exception.getMessage().contains("Unexpected character"));
     }
-
-
 }

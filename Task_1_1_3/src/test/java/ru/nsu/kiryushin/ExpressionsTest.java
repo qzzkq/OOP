@@ -107,5 +107,21 @@ public class ExpressionsTest {
         );
         Expression s4 = e4.simplification();
         assertEquals("0", s4.toString());
+
+        Expression e5 = new Sub(new Number(7), new Number(5));
+        Expression s5 = e5.simplification();
+        assertEquals("2", s5.toString());
+
+        Expression e6 = new Sub(new Variable("x"), new Variable("x"));
+        Expression s6 = e6.simplification();
+        assertEquals("0", s6.toString());
+
+        Expression e7 = new Sub(new Number(3), new Add(new Number(1), new Number(1)));
+        Expression s7 = e7.simplification();
+        assertEquals("1", s7.toString());
+
+        Expression e8 = new Sub(new Sub(new Number(10), new Number(3)), new Number(2));
+        Expression s8 = e8.simplification();
+        assertEquals("5", s8.toString());
     }
 }

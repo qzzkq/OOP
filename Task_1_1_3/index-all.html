@@ -70,7 +70,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Calculates the symbolic derivative for the specified variable.</div>
 </dd>
-<dt><a href="ru/nsu/kiryushin/Expression.html#derivative(java.lang.String)" class="member-name-link">derivative(String)</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Expression.html" title="class in ru.nsu.kiryushin">Expression</a></dt>
+<dt><a href="ru/nsu/kiryushin/Expression.html#derivative(java.lang.String)" class="member-name-link">derivative(String)</a> - Method in interface ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Expression.html" title="interface in ru.nsu.kiryushin">Expression</a></dt>
 <dd>
 <div class="block">Calculates the symbolic derivative for the specified variable.</div>
 </dd>
@@ -109,7 +109,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Evaluates the expression using the provided variable assignments.</div>
 </dd>
-<dt><a href="ru/nsu/kiryushin/Expression.html#eval(java.lang.String)" class="member-name-link">eval(String)</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Expression.html" title="class in ru.nsu.kiryushin">Expression</a></dt>
+<dt><a href="ru/nsu/kiryushin/Expression.html#eval(java.lang.String)" class="member-name-link">eval(String)</a> - Method in interface ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Expression.html" title="interface in ru.nsu.kiryushin">Expression</a></dt>
 <dd>
 <div class="block">Evaluates the expression using the provided variable assignments.</div>
 </dd>
@@ -129,12 +129,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Evaluates the expression using the provided variable assignments.</div>
 </dd>
-<dt><a href="ru/nsu/kiryushin/Expression.html" class="type-name-link" title="class in ru.nsu.kiryushin">Expression</a> - Class in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
+<dt><a href="ru/nsu/kiryushin/Expression.html" class="type-name-link" title="interface in ru.nsu.kiryushin">Expression</a> - Interface in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
 <dd>
-<div class="block">Base class for all expression tree nodes.</div>
+<div class="block">Contract for arithmetic expression nodes.</div>
 </dd>
-<dt><a href="ru/nsu/kiryushin/Expression.html#%3Cinit%3E()" class="member-name-link">Expression()</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Expression.html" title="class in ru.nsu.kiryushin">Expression</a></dt>
-<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:M">M</h2>
 <dl class="index">
@@ -190,6 +188,34 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
+<dt><a href="ru/nsu/kiryushin/Add.html#simplification()" class="member-name-link">simplification()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Add.html" title="class in ru.nsu.kiryushin">Add</a></dt>
+<dd>
+<div class="block">Creates a simplified copy of the expression according to algebraic rules.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/Div.html#simplification()" class="member-name-link">simplification()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Div.html" title="class in ru.nsu.kiryushin">Div</a></dt>
+<dd>
+<div class="block">Creates a simplified copy of the expression according to algebraic rules.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/Expression.html#simplification()" class="member-name-link">simplification()</a> - Method in interface ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Expression.html" title="interface in ru.nsu.kiryushin">Expression</a></dt>
+<dd>
+<div class="block">Creates a simplified copy of the expression according to algebraic rules.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/Mul.html#simplification()" class="member-name-link">simplification()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Mul.html" title="class in ru.nsu.kiryushin">Mul</a></dt>
+<dd>
+<div class="block">Creates a simplified copy of the expression according to algebraic rules.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/Number.html#simplification()" class="member-name-link">simplification()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Number.html" title="class in ru.nsu.kiryushin">Number</a></dt>
+<dd>
+<div class="block">Creates a simplified copy of the expression according to algebraic rules.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/Sub.html#simplification()" class="member-name-link">simplification()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Sub.html" title="class in ru.nsu.kiryushin">Sub</a></dt>
+<dd>
+<div class="block">Creates a simplified copy of the expression according to algebraic rules.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/Variable.html#simplification()" class="member-name-link">simplification()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Variable.html" title="class in ru.nsu.kiryushin">Variable</a></dt>
+<dd>
+<div class="block">Creates a simplified copy of the expression according to algebraic rules.</div>
+</dd>
 <dt><a href="ru/nsu/kiryushin/Sub.html" class="type-name-link" title="class in ru.nsu.kiryushin">Sub</a> - Class in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
 <dd>
 <div class="block">Binary subtraction node for the expression tree.</div>
@@ -209,7 +235,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Converts the expression to the canonical string representation.</div>
 </dd>
-<dt><a href="ru/nsu/kiryushin/Expression.html#toString()" class="member-name-link">toString()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Expression.html" title="class in ru.nsu.kiryushin">Expression</a></dt>
+<dt><a href="ru/nsu/kiryushin/Expression.html#toString()" class="member-name-link">toString()</a> - Method in interface ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Expression.html" title="interface in ru.nsu.kiryushin">Expression</a></dt>
 <dd>
 <div class="block">Converts the expression to the canonical string representation.</div>
 </dd>

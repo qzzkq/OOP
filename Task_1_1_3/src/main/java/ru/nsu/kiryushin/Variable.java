@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 /**
  * Variable reference in the expression tree.
  */
-public class Variable extends Expression {
+public class Variable implements Expression {
     private static final Pattern ASSIGNMENT_PATTERN = Pattern.compile("\\b([a-zA-Z]+)\\s*=\\s*(-?\\d+)\\b");
 
     private final String variable;
@@ -46,5 +46,10 @@ public class Variable extends Expression {
         }
         return new Number(0);
     }
-}
 
+    /** {@inheritDoc} */
+    @Override
+    public Expression simplification() {
+        return new Variable(this.variable);
+    }
+}

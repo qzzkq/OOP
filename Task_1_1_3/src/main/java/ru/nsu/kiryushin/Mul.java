@@ -3,7 +3,7 @@ package ru.nsu.kiryushin;
 /**
  * Binary multiplication node for the expression tree.
  */
-public class Mul extends Expression {
+public class Mul implements Expression {
     private final Expression left;
     private final Expression right;
 
@@ -36,5 +36,33 @@ public class Mul extends Expression {
         Expression leftDerivative = new Mul(this.left.derivative(variable), this.right);
         Expression rightDerivative = new Mul(this.left, this.right.derivative(variable));
         return new Add(leftDerivative, rightDerivative);
+    }
+    /** {@inheritDoc} */
+    @Override
+    public Expression simplification() {
+        Expression simplifiedLeft = this.left.simplification();
+        Expression simplifiedRight = this.right.simplification();
+
+        Integer leftValue = simplifiedLeft instanceof Number ? simplifiedLeft.eval("") : null;
+        Integer rightValue = simplifiedRight instanceof Number ? simplifiedRight.eval("") : null;
+
+        if (leftValue != null && leftValue == 0 || rightValue != null && rightValue == 0) {
+            return new Number(0);
+        }
+
+        if (leftValue != null && leftValue == 1) {
+            return simplifiedRight;
+        }
+
+        if (rightValue != null && rightValue == 1) {
+            return simplifiedLeft;
+        }
+
+        if (leftValue != null && rightValue != null) {
+            int value = leftValue * rightValue;
+            return new Number(value);
+        }
+
+        return new Mul(simplifiedLeft, simplifiedRight);
     }
 }

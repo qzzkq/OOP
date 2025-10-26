@@ -3,7 +3,7 @@ package ru.nsu.kiryushin;
 /**
  * Binary subtraction node for the expression tree.
  */
-public class Sub extends Expression {
+public class Sub implements Expression {
     private final Expression left;
     private final Expression right;
 
@@ -34,6 +34,24 @@ public class Sub extends Expression {
     @Override
     public Expression derivative(String variable) {
         return new Sub(this.left.derivative(variable), this.right.derivative(variable));
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Expression simplification() {
+        Expression simplifiedLeft = this.left.simplification();
+        Expression simplifiedRight = this.right.simplification();
+
+        if (simplifiedLeft.toString().equals(simplifiedRight.toString())) {
+            return new Number(0);
+        }
+
+        if (simplifiedLeft instanceof Number && simplifiedRight instanceof Number) {
+            int value = simplifiedLeft.eval("") - simplifiedRight.eval("");
+            return new Number(value);
+        }
+
+        return new Sub(simplifiedLeft, simplifiedRight);
     }
 }
 

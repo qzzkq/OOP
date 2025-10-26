@@ -19,13 +19,16 @@ public class Main {
                 System.err.println("No expression provided.");
                 return;
             }
+            System.out.println("Enter expression");
             String expressionText = scanner.nextLine();
+            System.out.println("Enter which variables to define");
             String assignments = scanner.hasNextLine() ? scanner.nextLine() : "";
 
             Parser parser = new Parser(expressionText);
             Expression expression = parser.parse();
 
             System.out.println(expression);
+            System.out.println(expression.simplification());
             System.out.println(expression.derivative(derivativeVariable));
             try {
                 System.out.println(expression.eval(assignments));

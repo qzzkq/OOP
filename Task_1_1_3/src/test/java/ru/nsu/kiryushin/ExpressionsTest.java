@@ -83,4 +83,28 @@ public class ExpressionsTest {
         assertEquals("(1+0)", exp.derivative("x").toString());
     }
 
+    /**
+     * Test simplification rules.
+     */
+    @Test
+    void testSimplification() {
+        Expression e1 = new Mul(new Number(2), new Add(new Number(3), new Number(4)));
+        Expression s1 = e1.simplification();
+        assertEquals("14", s1.toString());
+
+        Expression e2 = new Mul(new Variable("x"), new Number(0));
+        Expression s2 = e2.simplification();
+        assertEquals("0", s2.toString());
+
+        Expression e3 = new Mul(new Number(1), new Variable("y"));
+        Expression s3 = e3.simplification();
+        assertEquals("y", s3.toString());
+
+        Expression e4 = new Sub(
+                new Add(new Variable("z"), new Number(2)),
+                new Add(new Variable("z"), new Number(2))
+        );
+        Expression s4 = e4.simplification();
+        assertEquals("0", s4.toString());
+    }
 }

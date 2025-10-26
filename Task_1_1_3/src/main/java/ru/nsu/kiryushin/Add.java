@@ -3,7 +3,7 @@ package ru.nsu.kiryushin;
 /**
  * Binary addition node for the expression tree.
  */
-public class Add extends Expression {
+public class Add implements Expression {
     private final Expression left;
     private final Expression right;
 
@@ -34,5 +34,18 @@ public class Add extends Expression {
     @Override
     public Expression derivative(String variable) {
         return new Add(this.left.derivative(variable), this.right.derivative(variable));
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Expression simplification() {
+        Expression simplifiedLeft = this.left.simplification();
+        Expression simplifiedRight = this.right.simplification();
+
+        if (simplifiedLeft instanceof Number && simplifiedRight instanceof Number) {
+            int value = simplifiedLeft.eval("") + simplifiedRight.eval("");
+            return new Number(value);
+        }
+        return new Add(simplifiedLeft, simplifiedRight);
     }
 }

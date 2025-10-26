@@ -3,7 +3,7 @@ package ru.nsu.kiryushin;
 /**
  * Binary division node for the expression tree.
  */
-public class Div extends Expression {
+public class Div implements Expression {
     private final Expression left;
     private final Expression right;
 
@@ -44,5 +44,23 @@ public class Div extends Expression {
         );
         Expression denominator = new Mul(this.right, this.right);
         return new Div(numerator, denominator);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Expression simplification() {
+        Expression simplifiedLeft = this.left.simplification();
+        Expression simplifiedRight = this.right.simplification();
+
+        if (simplifiedLeft instanceof Number && simplifiedRight instanceof Number) {
+            int denominator = simplifiedRight.eval("");
+            if (denominator == 0) {
+                throw new ArithmeticException("Division by zero");
+            }
+            int value = simplifiedLeft.eval("") / denominator;
+            return new Number(value);
+        }
+
+        return new Div(simplifiedLeft, simplifiedRight);
     }
 }

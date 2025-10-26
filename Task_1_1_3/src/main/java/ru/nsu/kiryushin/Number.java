@@ -3,7 +3,7 @@ package ru.nsu.kiryushin;
 /**
  * Represents a constant numeric value in the expression tree.
  */
-public class Number extends Expression {
+public class Number implements Expression {
 
     private final int value;
 
@@ -32,5 +32,11 @@ public class Number extends Expression {
     @Override
     public Expression derivative(String variable) {
         return new Number(0);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Expression simplification() {
+        return new Number(this.value);
     }
 }

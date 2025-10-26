@@ -1,17 +1,26 @@
 package ru.nsu.kiryushin;
 
 /**
- * Base class for all expression tree nodes.
+ * Contract for arithmetic expression nodes.
+ *
+ * Implementers:
+ * - Keep nodes immutable.
+ * - Make toString() canonical (works with Parser).
+ * - Throw IllegalArgumentException if a variable is missing; ArithmeticException for bad ops.
+ *
+ * Usage:
+ *   Expression e = new Div(new Mul(new Add(new Variable("x"), new Number(3)), new Variable("y")),
+ *                          new Number(2));
+ *   e.eval("x=5 y=4"); // 16
  */
-public abstract class Expression {
+public interface Expression {
 
     /**
      * Converts the expression to the canonical string representation.
      *
      * @return expression text
      */
-    @Override
-    public abstract String toString();
+    String toString();
 
     /**
      * Evaluates the expression using the provided variable assignments.
@@ -19,7 +28,7 @@ public abstract class Expression {
      * @param variables assignments in the form {@code name = value}
      * @return computed integer value
      */
-    public abstract int eval(String variables);
+    int eval(String variables);
 
     /**
      * Calculates the symbolic derivative for the specified variable.
@@ -27,6 +36,13 @@ public abstract class Expression {
      * @param variable name of the variable to differentiate by
      * @return expression describing the derivative
      */
-    public abstract Expression derivative(String variable);
+    Expression derivative(String variable);
+
+    /**
+     * Creates a simplified copy of the expression according to algebraic rules.
+     *
+     * @return simplified expression tree
+     */
+    Expression simplification();
 }
 

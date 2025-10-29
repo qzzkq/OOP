@@ -16,13 +16,6 @@ package ru.nsu.kiryushin;
 public interface Expression {
 
     /**
-     * Converts the expression to the canonical string representation.
-     *
-     * @return expression text
-     */
-    String toString();
-
-    /**
      * Evaluates the expression using the provided variable assignments.
      *
      * @param variables assignments in the form {@code name = value}

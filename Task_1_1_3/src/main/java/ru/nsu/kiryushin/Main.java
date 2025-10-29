@@ -14,12 +14,12 @@ public class Main {
      */
     public static void main(String[] args) {
         String derivativeVariable = args.length > 0 ? args[0] : "x";
+        System.out.println("Enter expression");
         try (Scanner scanner = new Scanner(System.in)) {
             if (!scanner.hasNextLine()) {
                 System.err.println("No expression provided.");
                 return;
             }
-            System.out.println("Enter expression");
             String expressionText = scanner.nextLine();
             System.out.println("Enter which variables to define");
             String assignments = scanner.hasNextLine() ? scanner.nextLine() : "";

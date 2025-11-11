@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"ru.nsu.kiryushin","l":"AdjListGraph"},{"p":"ru.nsu.kiryushin","l":"AdjMatrGraph"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.kiryushin","l":"Graph"},{"p":"ru.nsu.kiryushin","l":"IndMatrGraph"},{"p":"ru.nsu.kiryushin","l":"TopologicalSort"}];updateSearchResults();

@@ -65,7 +65,7 @@ class IndMatrGraphTest {
         g.removeEdge(2, 1);
 
         assertEquals(Set.of(1, 2), g.getVertices());
-        assertEquals(Set.of(1, 2), g.getNeighbors(1));
+        assertEquals(Set.of(1), g.getNeighbors(1));
 
         g.clear();
         assertTrue(g.getVertices().isEmpty());

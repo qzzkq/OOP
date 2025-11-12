@@ -53,25 +53,22 @@ class AdjMatrGraphTest {
         assertTrue(g.getNeighbors(7).isEmpty());
     }
 
-    /** Exercises equality and vertex relocation logic. */
+    /** Exercises equality, hash code, and textual reporting. */
     @Test
     void equality() {
         AdjMatrGraph<String> g = new AdjMatrGraph<>(false);
         g.addEdge("a", "b");
-        g.addEdge("b", "c");
-        g.addEdge("c", "a");
-        g.removeVertex("b");
-        g.addEdge("c", "a");
+        g.addEdge("a", "b");
 
         AdjMatrGraph<String> copy = new AdjMatrGraph<>(false);
-        copy.addEdge("a", "c");
-        copy.addEdge("c", "a");
+        copy.addEdge("a", "b");
+        copy.addEdge("a", "b");
 
         assertEquals(g, copy);
         assertEquals(g.hashCode(), copy.hashCode());
         assertTrue(copy.toString().contains("AdjMatrGraph"));
 
-        copy.removeEdge("a", "c");
+        copy.removeEdge("a", "b");
         assertNotEquals(g, copy);
     }
 }

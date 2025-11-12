@@ -1,74 +1,48 @@
 package ru.nsu.kiryushin;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Set;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
-/** Tests for the incidence-matrix graph implementation. */
-class IndMatrGraphTest {
+/** Tests for the topological sort utility. */
+class TopologicalSortTest {
 
-    /** Checks equality and hash codes for identical graphs. */
+    /** Checks ordering on a simple DAG. */
     @Test
-    void basic() {
-        IndMatrGraph<String> g = new IndMatrGraph<>(true);
-        g.addEdge("a", "b");
-        g.addEdge("b", "c");
-        g.addEdge("c", "a");
+    void order() {
+        Graph<Integer> g = new AdjListGraph<>(true);
+        g.addEdge(1, 2);
+        g.addEdge(1, 3);
+        g.addEdge(2, 4);
+        g.addEdge(3, 4);
 
-        assertEquals(Set.of("a", "b", "c"), g.getVertices());
-        assertEquals(Set.of("b"), g.getNeighbors("a"));
-
-        IndMatrGraph<String> copy = new IndMatrGraph<>(true);
-        copy.addEdge("a", "b");
-        copy.addEdge("b", "c");
-        copy.addEdge("c", "a");
-        assertEquals(g, copy);
-        assertEquals(g.hashCode(), copy.hashCode());
-
-        copy.removeEdge("c", "a");
-        assertNotEquals(g, copy);
-        assertTrue(copy.getNeighbors("c").isEmpty());
+        List<Integer> order = TopologicalSort.sort(g);
+        assertEquals(List.of(1, 2, 3, 4), order);
     }
 
-    /** Verifies undirected edges add both directions. */
+    /** Throws when cycles are present. */
+    @Test
+    void cycle() {
+        Graph<Integer> g = new AdjListGraph<>(true);
+        g.addEdge(1, 2);
+        g.addEdge(2, 1);
+        assertThrows(IllegalStateException.class, () -> TopologicalSort.sort(g));
+    }
+
+    /** Rejects undirected graphs. */
     @Test
     void undirected() {
-        IndMatrGraph<Integer> g = new IndMatrGraph<>(false);
-        g.addEdge(1, 2);
-
-        assertEquals(Set.of(2), g.getNeighbors(1));
-        assertEquals(Set.of(1), g.getNeighbors(2));
+        Graph<Integer> g = new AdjListGraph<>(false);
+        assertThrows(IllegalArgumentException.class, () -> TopologicalSort.sort(g));
     }
 
-    /** Ensures removing vertices clears incident edges. */
+    /** Returns empty order for empty graphs. */
     @Test
-    void removeVertex() {
-        IndMatrGraph<String> g = new IndMatrGraph<>(true);
-        g.addEdge("m", "n");
-        g.addEdge("n", "o");
+    void empty() {
+        Graph<Integer> g = new AdjListGraph<>(true);
 
-        g.removeVertex("n");
-        assertFalse(g.getVertices().contains("n"));
-        assertTrue(g.getNeighbors("m").isEmpty());
-    }
-
-    /** Covers undirected removal symmetry and clear. */
-    @Test
-    void cleanUp() {
-        IndMatrGraph<Integer> g = new IndMatrGraph<>(false);
-        g.addEdge(1, 1);
-        g.addEdge(1, 2);
-        g.removeEdge(2, 1);
-
-        assertEquals(Set.of(1, 2), g.getVertices());
-        assertEquals(Set.of(1, 2), g.getNeighbors(1));
-
-        g.clear();
-        assertTrue(g.getVertices().isEmpty());
-        assertTrue(g.getNeighbors(1).isEmpty());
+        assertEquals(List.of(), TopologicalSort.sort(g));
     }
 }

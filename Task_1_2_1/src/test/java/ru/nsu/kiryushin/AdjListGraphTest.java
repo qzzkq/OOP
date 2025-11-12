@@ -2,6 +2,7 @@ package ru.nsu.kiryushin;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
@@ -52,5 +53,27 @@ class AdjListGraphTest {
 
         g.removeVertex("solo");
         assertTrue(g.getVertices().isEmpty());
+    }
+
+    /** Covers equality, hash codes, and string output. */
+    @Test
+    void identity() {
+        AdjListGraph<Integer> left = new AdjListGraph<>(true);
+        left.addEdge(1, 2);
+        left.addEdge(2, 3);
+        left.addEdge(2, 3);
+
+        AdjListGraph<Integer> right = new AdjListGraph<>(true);
+        right.addEdge(1, 2);
+        right.addEdge(2, 3);
+        right.addEdge(2, 3);
+
+        assertEquals(left, right);
+        assertEquals(left.hashCode(), right.hashCode());
+        assertTrue(left.toString().contains("AdjListGraph"));
+
+        right.removeEdge(2, 3);
+        assertNotEquals(left, right);
+        assertTrue(right.getNeighbors(99).isEmpty());
     }
 }

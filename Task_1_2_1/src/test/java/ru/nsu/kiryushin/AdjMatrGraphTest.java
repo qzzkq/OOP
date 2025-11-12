@@ -1,6 +1,7 @@
 package ru.nsu.kiryushin;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
@@ -50,5 +51,27 @@ class AdjMatrGraphTest {
         g.clear();
         assertTrue(g.getVertices().isEmpty());
         assertTrue(g.getNeighbors(7).isEmpty());
+    }
+
+    /** Exercises equality and vertex relocation logic. */
+    @Test
+    void equality() {
+        AdjMatrGraph<String> g = new AdjMatrGraph<>(false);
+        g.addEdge("a", "b");
+        g.addEdge("b", "c");
+        g.addEdge("c", "a");
+        g.removeVertex("b");
+        g.addEdge("c", "a");
+
+        AdjMatrGraph<String> copy = new AdjMatrGraph<>(false);
+        copy.addEdge("a", "c");
+        copy.addEdge("c", "a");
+
+        assertEquals(g, copy);
+        assertEquals(g.hashCode(), copy.hashCode());
+        assertTrue(copy.toString().contains("AdjMatrGraph"));
+
+        copy.removeEdge("a", "c");
+        assertNotEquals(g, copy);
     }
 }

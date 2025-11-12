@@ -55,4 +55,20 @@ class IndMatrGraphTest {
         assertFalse(g.getVertices().contains("n"));
         assertTrue(g.getNeighbors("m").isEmpty());
     }
+
+    /** Covers undirected removal symmetry and clear. */
+    @Test
+    void cleanUp() {
+        IndMatrGraph<Integer> g = new IndMatrGraph<>(false);
+        g.addEdge(1, 1);
+        g.addEdge(1, 2);
+        g.removeEdge(2, 1);
+
+        assertEquals(Set.of(1, 2), g.getVertices());
+        assertEquals(Set.of(1, 2), g.getNeighbors(1));
+
+        g.clear();
+        assertTrue(g.getVertices().isEmpty());
+        assertTrue(g.getNeighbors(1).isEmpty());
+    }
 }

@@ -3,8 +3,8 @@ package ru.nsu.kiryushin;
 import java.util.Set;
 
 /**
- * Basic graph contract that supports vertex/edge mutations and iteration.
- * Implementations can be directed or undirected and may support multiedges.
+ * Graph interface that supports vertex/edge adding and removal, get set of vertices, get vertex neighbors.
+ * Implementations can be directed or undirected and may support multiple edges.
  *
  * @param <V> vertex value type
  */

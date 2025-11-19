@@ -16,7 +16,7 @@ import java.util.Set;
  * Supports directed/undirected graphs and multiedges via duplicated entries.
  */
 public class AdjListGraph<V> implements Graph<V> {
-    private final Set<V> verticles;
+    private final Set<V> vertices;
     private final Map<V, List<V>> adjList;
     private final boolean directed;
 
@@ -26,7 +26,7 @@ public class AdjListGraph<V> implements Graph<V> {
      * @param directed true for directed graph, false for undirected
      */
     public AdjListGraph(boolean directed) {
-        this.verticles = new HashSet<>();
+        this.vertices = new HashSet<>();
         this.adjList = new HashMap<>();
         this.directed = directed;
     }
@@ -46,7 +46,7 @@ public class AdjListGraph<V> implements Graph<V> {
      */
     @Override
     public void addVertex(V v) {
-        if (verticles.add(v)) {
+        if (vertices.add(v)) {
             adjList.put(v, new ArrayList<>());
         }
     }
@@ -58,7 +58,7 @@ public class AdjListGraph<V> implements Graph<V> {
      */
     @Override
     public void removeVertex(V v) {
-        if (verticles.remove(v)) {
+        if (vertices.remove(v)) {
             adjList.remove(v);
             for (List<V> neighbors : adjList.values()) {
                 neighbors.removeIf(v::equals);
@@ -118,7 +118,7 @@ public class AdjListGraph<V> implements Graph<V> {
      */
     @Override
     public Set<V> getVertices() {
-        return new HashSet<>(verticles);
+        return new HashSet<>(vertices);
     }
 
     /**
@@ -126,7 +126,7 @@ public class AdjListGraph<V> implements Graph<V> {
      */
     @Override
     public void clear() {
-        verticles.clear();
+        vertices.clear();
         adjList.clear();
     }
 
@@ -156,7 +156,7 @@ public class AdjListGraph<V> implements Graph<V> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof AdjListGraph<?> that)) return false;
-        return directed == that.directed && Objects.equals(verticles, that.verticles)
+        return directed == that.directed && Objects.equals(vertices, that.vertices)
                 && Objects.equals(asMultimap(), that.asMultimap());
     }
 
@@ -167,7 +167,7 @@ public class AdjListGraph<V> implements Graph<V> {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(verticles, asMultimap(), directed);
+        return Objects.hash(vertices, asMultimap(), directed);
     }
 
     /**
@@ -177,7 +177,7 @@ public class AdjListGraph<V> implements Graph<V> {
     public String toString() {
         return "AdjListGraph{" +
                 "directed=" + directed +
-                ", verticles=" + verticles +
+                ", verticles=" + vertices +
                 ", edges=" + adjList +
                 '}';
     }

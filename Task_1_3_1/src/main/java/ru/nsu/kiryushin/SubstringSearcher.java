@@ -1,12 +1,7 @@
 package ru.nsu.kiryushin;
 
 import java.io.Reader;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +10,7 @@ import java.util.List;
  * Uses the Knuth–Morris–Pratt (KMP) algorithm over Unicode code points
  * and streams the file in fixed-size blocks.
  */
-public class SearchSubstrings {
+public class SubstringSearcher {
 
     private static final int BLOCK_SIZE = 8192;
 
@@ -25,27 +20,25 @@ public class SearchSubstrings {
     private int read = 0;
 
     /**
-     * Searches for all occurrences of the specified substring in the given UTF-8 encoded file.
-     * Matching is performed over Unicode code points, not UTF-16 chars.
+     * Searches for all occurrences of the specified substring in the given Reader.
+     * Matching is performed over Unicode code points.
      *
-     * @param file      path to the file
+     * @param reader    source reader
      * @param subString substring to search for
      * @return list of zero-based start positions of all matches (in code points)
-     * @throws IllegalArgumentException if file path is null/blank or substring is null/empty
-     * @throws RuntimeException         if the file does not exist or an I/O error occurs
+     * @throws IllegalArgumentException if reader is null or substring is null/empty
+     * @throws RuntimeException         if an I/O error occurs
      */
-    public List<Integer> search(String file, String subString) {
-        if (file == null || file.isBlank()) {
-            throw new IllegalArgumentException("File path must not be null");
+    public List<Integer> search(Reader reader, String subString) {
+        if (reader == null) {
+            throw new IllegalArgumentException("Reader must not be null");
         }
         if (subString == null || subString.isEmpty()) {
             throw new IllegalArgumentException("Substring must not be null or empty");
         }
 
-        Path path = Path.of(file);
-        if (!Files.exists(path)) {
-            throw new RuntimeException("File do not exists: " + file);
-        }
+        this.bufIndex = 0;
+        this.read = 0;
 
         List<Integer> indexes = new ArrayList<>();
 
@@ -55,13 +48,12 @@ public class SearchSubstrings {
         int k = 0;
         int globalIndex = 0;
         int subLen = pattern.length;
-        try (Reader reader =
-                     new InputStreamReader(new FileInputStream(path.toFile()), StandardCharsets.UTF_8)
-        ) {
-            while ((c = nextCodePoint(reader)) != -1){
+
+        try {
+            while ((c = nextCodePoint(reader)) != -1) {
 
                 while (k > 0 && c != pattern[k]) {
-                    k = pi[k-1];
+                    k = pi[k - 1];
                 }
 
                 if (c == pattern[k]) {
@@ -76,7 +68,7 @@ public class SearchSubstrings {
                 globalIndex++;
             }
         } catch (IOException e) {
-            throw new RuntimeException("Failed to process file: " + file, e);
+            throw new RuntimeException("Failed to read from stream", e);
         }
         return indexes;
     }

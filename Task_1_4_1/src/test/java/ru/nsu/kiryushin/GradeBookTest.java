@@ -19,14 +19,14 @@ class GradeBookTest {
     @Test
     void testInvalidCreditGrade() {
         assertThrows(IllegalArgumentException.class, () ->
-            new Grade(AssessmentType.CREDIT, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "Teacher")
+            Grade.create(AssessmentType.CREDIT, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "Teacher")
         );
     }
 
     @Test
     void testInvalidExamGrade() {
         assertThrows(IllegalArgumentException.class, () ->
-            new Grade(AssessmentType.EXAM, CreditGrade.CREDIT, "Math", LocalDate.now(), "Teacher")
+            Grade.create(AssessmentType.EXAM, CreditGrade.CREDIT, "Math", LocalDate.now(), "Teacher")
         );
     }
 
@@ -37,17 +37,17 @@ class GradeBookTest {
 
     @Test
     void testAverageGradeSimple() {
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.GOOD, "History", LocalDate.now(), "T2"));
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.SATISFACTORY, "Physics", LocalDate.now(), "T3"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.GOOD, "History", LocalDate.now(), "T2"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.SATISFACTORY, "Physics", LocalDate.now(), "T3"));
 
         assertEquals(4.0, gradeBook.computeAverageGrade(), 0.001);
     }
 
     @Test
     void testAverageGradeWithCredits() {
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
-        gradeBook.addGrade(1, new Grade(AssessmentType.CREDIT, CreditGrade.CREDIT, "PE", LocalDate.now(), "T2"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.CREDIT, CreditGrade.CREDIT, "PE", LocalDate.now(), "T2"));
 
         assertEquals(5.0, gradeBook.computeAverageGrade(), 0.001);
     }
@@ -59,8 +59,8 @@ class GradeBookTest {
 
     @Test
     void testStipendSuccess() {
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
-        gradeBook.addGrade(1, new Grade(AssessmentType.CREDIT, CreditGrade.CREDIT, "PE", LocalDate.now(), "T2"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.CREDIT, CreditGrade.CREDIT, "PE", LocalDate.now(), "T2"));
 
         gradeBook.increaseSemester();
 
@@ -69,8 +69,8 @@ class GradeBookTest {
 
     @Test
     void testStipendWithGoodGrade() {
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.GOOD, "History", LocalDate.now(), "T2"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.GOOD, "History", LocalDate.now(), "T2"));
 
         gradeBook.increaseSemester();
 
@@ -79,32 +79,32 @@ class GradeBookTest {
 
     @Test
     void testRedDiplomaWithSatisfactory() {
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.SATISFACTORY, "Math", LocalDate.now(), "T1"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.SATISFACTORY, "Math", LocalDate.now(), "T1"));
         assertFalse(gradeBook.canGetRedDiploma());
     }
 
     @Test
     void testRedDiplomaBadQualWork() {
-        gradeBook.addGrade(8, new Grade(AssessmentType.QUALIFICATION_WORK, FivePointGrade.GOOD, "Thesis", LocalDate.now(), "T1"));
+        gradeBook.addGrade(8, Grade.create(AssessmentType.QUALIFICATION_WORK, FivePointGrade.GOOD, "Thesis", LocalDate.now(), "T1"));
         assertFalse(gradeBook.canGetRedDiploma());
     }
 
     @Test
     void testRedDiplomaNotEnoughFives() {
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.GOOD, "History", LocalDate.now(), "T2"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.GOOD, "History", LocalDate.now(), "T2"));
 
         assertFalse(gradeBook.canGetRedDiploma());
     }
 
     @Test
     void testRedDiplomaSuccess() {
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Phys", LocalDate.now(), "T2"));
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Chem", LocalDate.now(), "T3"));
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.GOOD, "Hist", LocalDate.now(), "T4"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Math", LocalDate.now(), "T1"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Phys", LocalDate.now(), "T2"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Chem", LocalDate.now(), "T3"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.GOOD, "Hist", LocalDate.now(), "T4"));
 
-        gradeBook.addGrade(8, new Grade(AssessmentType.QUALIFICATION_WORK, FivePointGrade.EXCELLENT, "Thesis", LocalDate.now(), "T5"));
+        gradeBook.addGrade(8, Grade.create(AssessmentType.QUALIFICATION_WORK, FivePointGrade.EXCELLENT, "Thesis", LocalDate.now(), "T5"));
 
         assertTrue(gradeBook.canGetRedDiploma());
     }
@@ -122,7 +122,7 @@ class GradeBookTest {
     @Test
     void testTransferWithBadGrade() {
         gradeBook.increaseSemester();
-        gradeBook.addGrade(1, new Grade(AssessmentType.EXAM, FivePointGrade.SATISFACTORY, "Math", LocalDate.now(), "T1"));
+        gradeBook.addGrade(1, Grade.create(AssessmentType.EXAM, FivePointGrade.SATISFACTORY, "Math", LocalDate.now(), "T1"));
 
         assertEquals(-1, gradeBook.canTransferTo(FormOfStudy.PAID));
     }
@@ -132,8 +132,8 @@ class GradeBookTest {
         gradeBook.increaseSemester();
         gradeBook.increaseSemester();
 
-        gradeBook.addGrade(2, new Grade(AssessmentType.EXAM, FivePointGrade.GOOD, "Math", LocalDate.now(), "T1"));
-        gradeBook.addGrade(3, new Grade(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Phys", LocalDate.now(), "T2"));
+        gradeBook.addGrade(2, Grade.create(AssessmentType.EXAM, FivePointGrade.GOOD, "Math", LocalDate.now(), "T1"));
+        gradeBook.addGrade(3, Grade.create(AssessmentType.EXAM, FivePointGrade.EXCELLENT, "Phys", LocalDate.now(), "T2"));
 
         assertEquals(1, gradeBook.canTransferTo(FormOfStudy.PAID));
     }

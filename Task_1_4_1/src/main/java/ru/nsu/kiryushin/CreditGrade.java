@@ -22,3 +22,4 @@ public enum CreditGrade implements GradeValue {
     @Override
     public int getValue() { return 0; }
 }
+

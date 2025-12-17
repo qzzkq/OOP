@@ -10,37 +10,49 @@ import java.util.List;
  * Uses the Knuth–Morris–Pratt (KMP) algorithm over Unicode code points
  * and streams the file in fixed-size blocks.
  */
-public class SubstringSearcher {
+public class SubstringSearcher implements AutoCloseable {
 
     private static final int BLOCK_SIZE = 8192;
 
     private final char[] buffer = new char[BLOCK_SIZE];
+    private final List<Integer> indexes = new ArrayList<>();
 
+    private final Reader reader;
+    private final String subString;
+    /**
+     * Index inside buffer
+     */
     private int bufIndex = 0;
+    /**
+     * Count of symbols read
+     */
     private int read = 0;
+
+    public SubstringSearcher(Reader reader, String subString) {
+        if (reader == null) {
+            throw new IllegalArgumentException("Reader must not be null");
+        }
+
+        if (subString == null || subString.isEmpty()) {
+            throw new IllegalArgumentException("Substring must not be null or empty");
+        }
+
+        this.reader = reader;
+        this.subString = subString;
+    }
 
     /**
      * Searches for all occurrences of the specified substring in the given Reader.
      * Matching is performed over Unicode code points.
      *
-     * @param reader    source reader
-     * @param subString substring to search for
      * @return list of zero-based start positions of all matches (in code points)
      * @throws IllegalArgumentException if reader is null or substring is null/empty
      * @throws RuntimeException         if an I/O error occurs
      */
-    public List<Integer> search(Reader reader, String subString) {
-        if (reader == null) {
-            throw new IllegalArgumentException("Reader must not be null");
+    public List<Integer> search() {
+        if (this.read > 0) {
+            return indexes;
         }
-        if (subString == null || subString.isEmpty()) {
-            throw new IllegalArgumentException("Substring must not be null or empty");
-        }
-
-        this.bufIndex = 0;
-        this.read = 0;
-
-        List<Integer> indexes = new ArrayList<>();
 
         int[] pattern = subString.codePoints().toArray();
         int[] pi = prefixFunction(pattern);
@@ -50,7 +62,7 @@ public class SubstringSearcher {
         int subLen = pattern.length;
 
         try {
-            while ((c = nextCodePoint(reader)) != -1) {
+            while ((c = nextCodePoint()) != -1) {
 
                 while (k > 0 && c != pattern[k]) {
                     k = pi[k - 1];
@@ -104,12 +116,11 @@ public class SubstringSearcher {
      * Reads the next Unicode code point from the stream using an internal char buffer.
      * Handles surrogate pairs explicitly.
      *
-     * @param reader source reader
      * @return next code point, or {@code -1} if end of stream is reached
      * @throws IOException if an I/O error occurs or an incomplete surrogate pair is found at EOF
      */
-    private int nextCodePoint(Reader reader) throws IOException {
-        if (!checkForReread(reader)){
+    private int nextCodePoint() throws IOException {
+        if (!checkForReread()){
             return -1;
         };
 
@@ -120,7 +131,7 @@ public class SubstringSearcher {
             return firstChar;
         }
 
-        if (!checkForReread(reader)) {
+        if (!checkForReread()) {
             throw new IOException("Incomplete surrogate pair at EOF");
         };
 
@@ -134,17 +145,21 @@ public class SubstringSearcher {
      * Ensures that the internal buffer has at least one unread character.
      * If the buffer is exhausted, reads the next block from the reader.
      *
-     * @param reader source reader
      * @return {@code true} if a character is available, {@code false} if EOF is reached
      * @throws IOException if an I/O error occurs during reading
      */
-    private boolean checkForReread(Reader reader) throws IOException {
+    private boolean checkForReread() throws IOException {
         if (bufIndex >= read) {
             bufIndex = 0;
             read = reader.read(buffer, 0, BLOCK_SIZE);
             return read != -1;
         }
         return true;
+    }
+
+    @Override
+    public void close() throws Exception {
+        reader.close();
     }
 }
 

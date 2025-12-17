@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+
 class SubstringSearcherTest {
 
     private final SubstringSearcher searcher = new SubstringSearcher();
@@ -16,9 +17,9 @@ class SubstringSearcherTest {
     @Test
     void testExample() {
         String text = "абракадабра";
-        List<Integer> result = searcher.search(new StringReader(text), "бра");
+        List<Integer> result = new SubstringSearcher(new StringReader(text), "бра").search();
         assertEquals(List.of(1, 8), result);
-    }
+   }
 
     @Test
     void testOverlap() {

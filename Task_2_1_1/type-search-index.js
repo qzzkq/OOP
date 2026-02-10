@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.kiryushin","l":"PrimeCheckerSequent"},{"p":"ru.nsu.kiryushin","l":"PrimeCheckerThread"},{"p":"ru.nsu.kiryushin","l":"PrimeParallelStreamChecker"},{"p":"ru.nsu.kiryushin","l":"PrimeCheckerThread.Worker"}];updateSearchResults();

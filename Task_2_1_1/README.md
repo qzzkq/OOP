@@ -7,7 +7,7 @@
 найдено, иначе false 
 
 (а) seq    - 1 поток
-(б) thread - 2-15 потоков
+(б) thread - 1-12 потоков с помощью java.lang.Thread
 (в) stream - использование ParallelStream
 
 #### Исследование скорости поиска

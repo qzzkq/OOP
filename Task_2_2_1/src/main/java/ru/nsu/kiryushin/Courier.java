@@ -6,17 +6,27 @@ import java.util.List;
  */
 public class Courier implements Runnable {
     private final int bagCapacity;
-    private final BlockingList<Order> storage;
+    private final OrderDepartment orderDepartment;
 
     /**
      * Creates a courier worker.
      *
      * @param bagCapacity maximum number of orders delivered in one trip
+     * @param orderDepartment department that provides ready orders
+     */
+    public Courier(int bagCapacity, OrderDepartment orderDepartment) {
+        this.bagCapacity = bagCapacity;
+        this.orderDepartment = orderDepartment;
+    }
+
+    /**
+     * Creates a courier worker from raw storage.
+     *
+     * @param bagCapacity maximum number of orders delivered in one trip
      * @param storage finished-order storage
      */
     public Courier(int bagCapacity, BlockingList<Order> storage) {
-        this.bagCapacity = bagCapacity;
-        this.storage = storage;
+        this(bagCapacity, new OrderDepartment(new BlockingList<>(1), storage));
     }
 
     /**
@@ -26,21 +36,14 @@ public class Courier implements Runnable {
     public void run() {
         try {
             while (true) {
-                List<Order> orders = storage.takeMultiple(bagCapacity);
+                List<Order> orders = orderDepartment.takeOrdersForDelivery(bagCapacity);
                 if (orders.isEmpty()) {
                     return;
                 }
 
-                for (Order order : orders) {
-                    System.out.println("[" + order.getId() + "] [LOADED]");
-                    System.out.println("[" + order.getId() + "] [DELIVERING]");
-                }
-
                 Thread.sleep(totalDeliveryTime(orders));
 
-                for (Order order : orders) {
-                    System.out.println("[" + order.getId() + "] [DELIVERED]");
-                }
+                orderDepartment.completeDelivery(orders);
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

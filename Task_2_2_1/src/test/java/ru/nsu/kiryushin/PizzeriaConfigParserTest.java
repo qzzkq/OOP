@@ -87,4 +87,67 @@ public class PizzeriaConfigParserTest {
 
         assertTrue(exception.getMessage().contains("Invalid config format"));
     }
+
+    @Test
+    void testMissingNestedBakerSpeedField() throws IOException {
+        Path configFile = tempDir.resolve("missing-baker-speed.json");
+        Files.writeString(configFile, """
+                {
+                  "workDurationMs": 1000,
+                  "warehouseCapacity": 2,
+                  "bakers": [{}],
+                  "couriers": [{"bagCapacity": 1}],
+                  "orders": [{"id": 1, "arrivalTimeMs": 0, "deliveryTimeMs": 100}]
+                }
+                """);
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> PizzeriaConfigParser.parse(configFile.toString())
+        );
+
+        assertTrue(exception.getMessage().contains("Missing required field: baker.speedMs"));
+    }
+
+    @Test
+    void testNullCourierEntry() throws IOException {
+        Path configFile = tempDir.resolve("null-courier.json");
+        Files.writeString(configFile, """
+                {
+                  "workDurationMs": 1000,
+                  "warehouseCapacity": 2,
+                  "bakers": [{"speedMs": 300}],
+                  "couriers": [null],
+                  "orders": [{"id": 1, "arrivalTimeMs": 0, "deliveryTimeMs": 100}]
+                }
+                """);
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> PizzeriaConfigParser.parse(configFile.toString())
+        );
+
+        assertTrue(exception.getMessage().contains("Missing required field: courier"));
+    }
+
+    @Test
+    void testEmptyBakersArrayFailsConfigValidation() throws IOException {
+        Path configFile = tempDir.resolve("empty-bakers.json");
+        Files.writeString(configFile, """
+                {
+                  "workDurationMs": 1000,
+                  "warehouseCapacity": 2,
+                  "bakers": [],
+                  "couriers": [{"bagCapacity": 1}],
+                  "orders": [{"id": 1, "arrivalTimeMs": 0, "deliveryTimeMs": 100}]
+                }
+                """);
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> PizzeriaConfigParser.parse(configFile.toString())
+        );
+
+        assertTrue(exception.getMessage().contains("No bakers"));
+    }
 }

@@ -48,7 +48,14 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<h2 class="title" id="I:A">A</h2>
+<dl class="index">
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html#acceptOrdersDuringWorkingHours()" class="member-name-link">acceptOrdersDuringWorkingHours()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a></dt>
+<dd>
+<div class="block">Accepts configured orders during working hours and closes the incoming queue afterwards.</div>
+</dd>
+</dl>
 <h2 class="title" id="I:B">B</h2>
 <dl class="index">
 <dt><a href="ru/nsu/kiryushin/Baker.html" class="type-name-link" title="class in ru.nsu.kiryushin">Baker</a> - Class in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
@@ -56,6 +63,10 @@ loadScripts(document, 'script');</script>
 <div class="block">Worker that prepares orders and places finished pizzas into storage.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Baker.html#%3Cinit%3E(long,ru.nsu.kiryushin.BlockingList,ru.nsu.kiryushin.BlockingList)" class="member-name-link">Baker(long, BlockingList&lt;Order&gt;, BlockingList&lt;Order&gt;)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Baker.html" title="class in ru.nsu.kiryushin">Baker</a></dt>
+<dd>
+<div class="block">Creates a baker worker from raw queues.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/Baker.html#%3Cinit%3E(long,ru.nsu.kiryushin.OrderDepartment)" class="member-name-link">Baker(long, OrderDepartment)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Baker.html" title="class in ru.nsu.kiryushin">Baker</a></dt>
 <dd>
 <div class="block">Creates a baker worker.</div>
 </dd>
@@ -74,11 +85,27 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Closes the list and wakes all waiting threads.</div>
 </dd>
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html#closeOrders()" class="member-name-link">closeOrders()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a></dt>
+<dd>
+<div class="block">Closes the incoming order queue.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html#closeStorage()" class="member-name-link">closeStorage()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a></dt>
+<dd>
+<div class="block">Closes finished-order storage.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html#completeDelivery(java.util.List)" class="member-name-link">completeDelivery(List&lt;Order&gt;)</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a></dt>
+<dd>
+<div class="block">Prints delivered statuses for the completed courier trip.</div>
+</dd>
 <dt><a href="ru/nsu/kiryushin/Courier.html" class="type-name-link" title="class in ru.nsu.kiryushin">Courier</a> - Class in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
 <dd>
 <div class="block">Worker that takes ready orders from storage and delivers them in batches.</div>
 </dd>
 <dt><a href="ru/nsu/kiryushin/Courier.html#%3Cinit%3E(int,ru.nsu.kiryushin.BlockingList)" class="member-name-link">Courier(int, BlockingList&lt;Order&gt;)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Courier.html" title="class in ru.nsu.kiryushin">Courier</a></dt>
+<dd>
+<div class="block">Creates a courier worker from raw storage.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/Courier.html#%3Cinit%3E(int,ru.nsu.kiryushin.OrderDepartment)" class="member-name-link">Courier(int, OrderDepartment)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Courier.html" title="class in ru.nsu.kiryushin">Courier</a></dt>
 <dd>
 <div class="block">Creates a courier worker.</div>
 </dd>
@@ -128,6 +155,22 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Creates an order description.</div>
 </dd>
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html" class="type-name-link" title="class in ru.nsu.kiryushin">OrderDepartment</a> - Class in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
+<dd>
+<div class="block">Owns order queues and all order-related status output.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html#%3Cinit%3E(int,int)" class="member-name-link">OrderDepartment(int, int)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a></dt>
+<dd>
+<div class="block">Creates an order department for tests or standalone worker execution.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html#%3Cinit%3E(ru.nsu.kiryushin.PizzeriaConfig)" class="member-name-link">OrderDepartment(PizzeriaConfig)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a></dt>
+<dd>
+<div class="block">Creates an order department from the full pizzeria configuration.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html#%3Cinit%3E(ru.nsu.kiryushin.PizzeriaConfig,int,int)" class="member-name-link">OrderDepartment(PizzeriaConfig, int, int)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a></dt>
+<dd>
+<div class="block">Creates an order department with explicit queue capacities.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:P">P</h2>
 <dl class="index">
@@ -155,6 +198,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Parses a pizzeria configuration from a JSON file.</div>
 </dd>
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html#placeCookedOrderInStorage(ru.nsu.kiryushin.Order)" class="member-name-link">placeCookedOrderInStorage(Order)</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a></dt>
+<dd>
+<div class="block">Stores a finished order and prints storage-related statuses.</div>
+</dd>
 <dt><a href="ru/nsu/kiryushin/BlockingList.html#put(T)" class="member-name-link">put(T)</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/BlockingList.html" title="class in ru.nsu.kiryushin">BlockingList</a></dt>
 <dd>
 <div class="block">Adds an element, waiting until space becomes available if needed.</div>
@@ -181,6 +228,17 @@ loadScripts(document, 'script');</script>
 <div class="block">Runs the pizzeria for one simulated workday.</div>
 </dd>
 </dl>
+<h2 class="title" id="I:S">S</h2>
+<dl class="index">
+<dt><a href="ru/nsu/kiryushin/WorkerDepartment.html#startWorkers()" class="member-name-link">startWorkers()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/WorkerDepartment.html" title="class in ru.nsu.kiryushin">WorkerDepartment</a></dt>
+<dd>
+<div class="block">Starts all configured bakers and couriers.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html#submitOrder(ru.nsu.kiryushin.Order)" class="member-name-link">submitOrder(Order)</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a></dt>
+<dd>
+<div class="block">Adds a new incoming order and prints its accepted status.</div>
+</dd>
+</dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
 <dt><a href="ru/nsu/kiryushin/BlockingList.html#take()" class="member-name-link">take()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/BlockingList.html" title="class in ru.nsu.kiryushin">BlockingList</a></dt>
@@ -191,8 +249,31 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Removes up to <code>max</code> elements from the head of the list.</div>
 </dd>
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html#takeOrderForCooking()" class="member-name-link">takeOrderForCooking()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a></dt>
+<dd>
+<div class="block">Returns the next order for a baker and prints its cooking status.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/OrderDepartment.html#takeOrdersForDelivery(int)" class="member-name-link">takeOrdersForDelivery(int)</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a></dt>
+<dd>
+<div class="block">Returns orders for a courier trip and prints loading statuses.</div>
+</dd>
 </dl>
-<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:T">T</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<h2 class="title" id="I:W">W</h2>
+<dl class="index">
+<dt><a href="ru/nsu/kiryushin/WorkerDepartment.html#waitForWorkers()" class="member-name-link">waitForWorkers()</a> - Method in class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/WorkerDepartment.html" title="class in ru.nsu.kiryushin">WorkerDepartment</a></dt>
+<dd>
+<div class="block">Waits for bakers to finish, closes storage, and then waits for couriers.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/WorkerDepartment.html" class="type-name-link" title="class in ru.nsu.kiryushin">WorkerDepartment</a> - Class in <a href="ru/nsu/kiryushin/package-summary.html">ru.nsu.kiryushin</a></dt>
+<dd>
+<div class="block">Owns worker threads and their lifecycle.</div>
+</dd>
+<dt><a href="ru/nsu/kiryushin/WorkerDepartment.html#%3Cinit%3E(ru.nsu.kiryushin.PizzeriaConfig,ru.nsu.kiryushin.OrderDepartment)" class="member-name-link">WorkerDepartment(PizzeriaConfig, OrderDepartment)</a> - Constructor for class ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/WorkerDepartment.html" title="class in ru.nsu.kiryushin">WorkerDepartment</a></dt>
+<dd>
+<div class="block">Creates a worker department from the pizzeria configuration.</div>
+</dd>
+</dl>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:W">W</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>

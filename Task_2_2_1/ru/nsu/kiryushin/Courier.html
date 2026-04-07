@@ -96,6 +96,11 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(int,ru.nsu.kiryushin.BlockingList)" class="member-name-link">Courier</a><wbr>(int&nbsp;bagCapacity,
  <a href="BlockingList.html" title="class in ru.nsu.kiryushin">BlockingList</a>&lt;<a href="Order.html" title="class in ru.nsu.kiryushin">Order</a>&gt;&nbsp;storage)</code></div>
 <div class="col-last even-row-color">
+<div class="block">Creates a courier worker from raw storage.</div>
+</div>
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(int,ru.nsu.kiryushin.OrderDepartment)" class="member-name-link">Courier</a><wbr>(int&nbsp;bagCapacity,
+ <a href="OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a>&nbsp;orderDepartment)</code></div>
+<div class="col-last odd-row-color">
 <div class="block">Creates a courier worker.</div>
 </div>
 </div>
@@ -135,11 +140,24 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
+<section class="detail" id="&lt;init&gt;(int,ru.nsu.kiryushin.OrderDepartment)">
+<h3>Courier</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Courier</span><wbr><span class="parameters">(int&nbsp;bagCapacity,
+ <a href="OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a>&nbsp;orderDepartment)</span></div>
+<div class="block">Creates a courier worker.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>bagCapacity</code> - maximum number of orders delivered in one trip</dd>
+<dd><code>orderDepartment</code> - department that provides ready orders</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="&lt;init&gt;(int,ru.nsu.kiryushin.BlockingList)">
 <h3>Courier</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Courier</span><wbr><span class="parameters">(int&nbsp;bagCapacity,
  <a href="BlockingList.html" title="class in ru.nsu.kiryushin">BlockingList</a>&lt;<a href="Order.html" title="class in ru.nsu.kiryushin">Order</a>&gt;&nbsp;storage)</span></div>
-<div class="block">Creates a courier worker.</div>
+<div class="block">Creates a courier worker from raw storage.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>bagCapacity</code> - maximum number of orders delivered in one trip</dd>

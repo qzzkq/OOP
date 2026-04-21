@@ -8,7 +8,6 @@ import java.util.List;
  */
 public class WorkerDepartment {
     private final PizzeriaConfig config;
-    private final OrderDepartment orderDepartment;
     private final List<Thread> bakerThreads = new ArrayList<>();
     private final List<Thread> courierThreads = new ArrayList<>();
 
@@ -18,15 +17,14 @@ public class WorkerDepartment {
      * @param config simulation settings
      * @param orderDepartment department that provides orders and storage
      */
-    public WorkerDepartment(PizzeriaConfig config, OrderDepartment orderDepartment) {
+    public WorkerDepartment(PizzeriaConfig config) {
         this.config = config;
-        this.orderDepartment = orderDepartment;
     }
 
     /**
      * Starts all configured bakers and couriers.
      */
-    public void startWorkers() {
+    public void startWorkers(OrderDepartment orderDepartment) {
         int bakerIndex = 1;
         for (long speedMs : config.getBakerSpeeds()) {
             Thread bakerThread = new Thread(
@@ -53,9 +51,11 @@ public class WorkerDepartment {
      *
      * @throws InterruptedException if the current thread is interrupted while waiting
      */
-    public void waitForWorkers() throws InterruptedException {
+    public void waitForBakers() throws InterruptedException {
         joinAll(bakerThreads);
-        orderDepartment.closeStorage();
+    }
+
+    public void waitForCoriers() throws InterruptedException {
         joinAll(courierThreads);
     }
 

@@ -14,7 +14,7 @@ public class Pizzeria {
      */
     public Pizzeria(PizzeriaConfig config) {
         this.orderDepartment = new OrderDepartment(config);
-        this.workerDepartment = new WorkerDepartment(config, orderDepartment);
+        this.workerDepartment = new WorkerDepartment(config);
     }
 
     /**
@@ -23,8 +23,12 @@ public class Pizzeria {
      * @throws InterruptedException if the current thread is interrupted while waiting
      */
     public void runDay() throws InterruptedException {
-        workerDepartment.startWorkers();
+        workerDepartment.startWorkers(orderDepartment);
+
         orderDepartment.acceptOrdersDuringWorkingHours();
-        workerDepartment.waitForWorkers();
+
+        workerDepartment.waitForBakers();
+        orderDepartment.closeStorage();
+        workerDepartment.waitForCoriers();
     }
 }

@@ -15,7 +15,6 @@ public class WorkerDepartment {
      * Creates a worker department from the pizzeria configuration.
      *
      * @param config simulation settings
-     * @param orderDepartment department that provides orders and storage
      */
     public WorkerDepartment(PizzeriaConfig config) {
         this.config = config;
@@ -23,6 +22,8 @@ public class WorkerDepartment {
 
     /**
      * Starts all configured bakers and couriers.
+     *
+     * @param orderDepartment department that provides orders and storage
      */
     public void startWorkers(OrderDepartment orderDepartment) {
         int bakerIndex = 1;
@@ -55,6 +56,11 @@ public class WorkerDepartment {
         joinAll(bakerThreads);
     }
 
+    /**
+     * Waits for couriers to finish.
+     *
+     * @throws InterruptedException if the current thread is interrupted while waiting
+     */
     public void waitForCoriers() throws InterruptedException {
         joinAll(courierThreads);
     }

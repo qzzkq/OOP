@@ -88,8 +88,7 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.kiryushin.PizzeriaConfig,ru.nsu.kiryushin.OrderDepartment)" class="member-name-link">WorkerDepartment</a><wbr>(<a href="PizzeriaConfig.html" title="class in ru.nsu.kiryushin">PizzeriaConfig</a>&nbsp;config,
- <a href="OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a>&nbsp;orderDepartment)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.kiryushin.PizzeriaConfig)" class="member-name-link">WorkerDepartment</a><wbr>(<a href="PizzeriaConfig.html" title="class in ru.nsu.kiryushin">PizzeriaConfig</a>&nbsp;config)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Creates a worker department from the pizzeria configuration.</div>
 </div>
@@ -108,14 +107,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#startWorkers()" class="member-name-link">startWorkers</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#startWorkers(ru.nsu.kiryushin.OrderDepartment)" class="member-name-link">startWorkers</a><wbr>(<a href="OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a>&nbsp;orderDepartment)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Starts all configured bakers and couriers.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#waitForWorkers()" class="member-name-link">waitForWorkers</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#waitForBakers()" class="member-name-link">waitForBakers</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Waits for bakers to finish, closes storage, and then waits for couriers.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#waitForCoriers()" class="member-name-link">waitForCoriers</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Waits for couriers to finish.</div>
 </div>
 </div>
 </div>
@@ -135,15 +139,13 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(ru.nsu.kiryushin.PizzeriaConfig,ru.nsu.kiryushin.OrderDepartment)">
+<section class="detail" id="&lt;init&gt;(ru.nsu.kiryushin.PizzeriaConfig)">
 <h3>WorkerDepartment</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">WorkerDepartment</span><wbr><span class="parameters">(<a href="PizzeriaConfig.html" title="class in ru.nsu.kiryushin">PizzeriaConfig</a>&nbsp;config,
- <a href="OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a>&nbsp;orderDepartment)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">WorkerDepartment</span><wbr><span class="parameters">(<a href="PizzeriaConfig.html" title="class in ru.nsu.kiryushin">PizzeriaConfig</a>&nbsp;config)</span></div>
 <div class="block">Creates a worker department from the pizzeria configuration.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>config</code> - simulation settings</dd>
-<dd><code>orderDepartment</code> - department that provides orders and storage</dd>
 </dl>
 </section>
 </li>
@@ -156,18 +158,34 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="startWorkers()">
+<section class="detail" id="startWorkers(ru.nsu.kiryushin.OrderDepartment)">
 <h3>startWorkers</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">startWorkers</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">startWorkers</span><wbr><span class="parameters">(<a href="OrderDepartment.html" title="class in ru.nsu.kiryushin">OrderDepartment</a>&nbsp;orderDepartment)</span></div>
 <div class="block">Starts all configured bakers and couriers.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>orderDepartment</code> - department that provides orders and storage</dd>
+</dl>
 </section>
 </li>
 <li>
-<section class="detail" id="waitForWorkers()">
-<h3>waitForWorkers</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">waitForWorkers</span>()
-                    throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
+<section class="detail" id="waitForBakers()">
+<h3>waitForBakers</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">waitForBakers</span>()
+                   throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
 <div class="block">Waits for bakers to finish, closes storage, and then waits for couriers.</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if the current thread is interrupted while waiting</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="waitForCoriers()">
+<h3>waitForCoriers</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">waitForCoriers</span>()
+                    throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
+<div class="block">Waits for couriers to finish.</div>
 <dl class="notes">
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if the current thread is interrupted while waiting</dd>

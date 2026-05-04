@@ -4,5 +4,12 @@ package ru.nsu.kiryushin;
  * Cardinal directions for snake movement.
  */
 public enum Direction {
-    UP, DOWN, LEFT, RIGHT
+    /** Upward movement (decreasing Y). */
+    UP,
+    /** Downward movement (increasing Y). */
+    DOWN,
+    /** Leftward movement (decreasing X). */
+    LEFT,
+    /** Rightward movement (increasing X). */
+    RIGHT
 }

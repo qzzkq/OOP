@@ -20,6 +20,7 @@ public class Game {
     private final int winLength;
     private final int targetFoodCount;
 
+    /** Nanoseconds per tick at 1× speed; divide by the multiplier to get the actual interval. */
     public static final double CONST_SPEED = 150_000_000;
     private double speed = 1.0;
 
@@ -76,7 +77,7 @@ public class Game {
     }
 
     /**
-     * Returns the current speed multiplier (1.0 = normal, >1 = faster, <1 = slower).
+     * Returns the current speed multiplier (1.0 = normal, &gt;1 = faster, &lt;1 = slower).
      *
      * @return speed multiplier
      */
@@ -84,11 +85,6 @@ public class Game {
         return speed;
     }
 
-    /**
-     * Advances one game tick: moves the snake, checks collisions, and checks the win condition.
-     *
-     * @return {@code true} if the game is still running, {@code false} if it has ended
-     */
     /**
      * Queues a direction change. Validated against the last queued direction (or the current
      * snake direction if the queue is empty) to prevent 180° turns. Excess inputs are dropped.
@@ -109,6 +105,11 @@ public class Game {
             || (a == Direction.RIGHT && b == Direction.LEFT);
     }
 
+    /**
+     * Advances one game tick: moves the snake, checks collisions, and checks the win condition.
+     *
+     * @return {@code true} if the game is still running, {@code false} if it has ended
+     */
     public boolean update() {
         if (state != GameState.PLAYING) return false;
 

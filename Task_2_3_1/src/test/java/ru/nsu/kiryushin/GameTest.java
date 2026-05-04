@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameTest {
@@ -135,6 +136,111 @@ class GameTest {
             new Ice(new Point(0, 0)).applyEffect(game);
         }
         assertTrue(game.getSpeed() <= baseline * 4);
+    }
+
+    @Test
+    void getBoardDimensions() {
+        Game game = new Game(15, 12, 50, 0);
+        assertEquals(15, game.getColumns());
+        assertEquals(12, game.getRows());
+    }
+
+    @Test
+    void getSpeedMultiplierInitiallyOne() {
+        Game game = new Game(10, 10, 50, 0);
+        assertEquals(1.0, game.getSpeedMultiplier(), 0.001);
+    }
+
+    @Test
+    void boardFullSetsWon() {
+        Game game = new Game(1, 1, 50, 1);
+        assertEquals(GameState.WON, game.getState());
+    }
+
+    @Test
+    void queueDirectionIsAppliedOnUpdate() {
+        Game game = new Game(10, 10, 50, 0);
+        game.queueDirection(Direction.UP);
+        game.update();
+        assertEquals(Direction.UP, game.getSnake().getDirection());
+    }
+
+    @Test
+    void queueDirectionIgnoresOpposite() {
+        Game game = new Game(10, 10, 50, 0);
+        game.queueDirection(Direction.LEFT);
+        game.update();
+        assertEquals(Direction.RIGHT, game.getSnake().getDirection());
+    }
+
+    @Test
+    void queueDirectionDropsInputsBeyondCapacity() {
+        Game game = new Game(10, 10, 50, 0);
+        game.queueDirection(Direction.UP);
+        game.queueDirection(Direction.LEFT);
+        game.queueDirection(Direction.DOWN);
+
+        game.update();
+        assertEquals(Direction.UP, game.getSnake().getDirection());
+        game.update();
+        assertEquals(Direction.LEFT, game.getSnake().getDirection());
+        game.update();
+        assertEquals(Direction.LEFT, game.getSnake().getDirection());
+    }
+
+    @Test
+    void snakeCollidingWithItselfLoses() {
+        Game game = new Game(20, 20, 50, 0);
+        Snake snake = game.getSnake();
+        for (int i = 0; i < 4; i++) {
+            snake.grow();
+            game.update();
+        }
+        game.queueDirection(Direction.UP);
+        game.update();
+        game.queueDirection(Direction.LEFT);
+        game.update();
+        game.queueDirection(Direction.DOWN);
+        game.update();
+        assertEquals(GameState.LOSE, game.getState());
+    }
+
+    @Test
+    void boosterGetPosition() {
+        Point pos = new Point(3, 7);
+        Booster booster = new Booster(pos);
+        assertEquals(pos, booster.getPosition());
+    }
+
+    @Test
+    void chiliGetPosition() {
+        Point pos = new Point(2, 4);
+        Chili chili = new Chili(pos);
+        assertEquals(pos, chili.getPosition());
+    }
+
+    @Test
+    void iceGetPosition() {
+        Point pos = new Point(1, 3);
+        Ice ice = new Ice(pos);
+        assertEquals(pos, ice.getPosition());
+    }
+
+    @Test
+    void snakeHitsBottomWallLoses() {
+        Game game = new Game(10, 10, 50, 0);
+        game.getSnake().setDirection(Direction.DOWN);
+        for (int i = 0; i < 15; i++) {
+            game.update();
+        }
+        assertEquals(GameState.LOSE, game.getState());
+    }
+
+    @Test
+    void foodsOnBoardIsUnmodifiable() {
+        Game game = new Game(10, 10, 50, 1);
+        assertNotNull(game.getFoodsOnBoard());
+        assertFalse(game.getFoodsOnBoard().isEmpty());
     }
 
     private Game createGameWithSnake(Snake snake) {

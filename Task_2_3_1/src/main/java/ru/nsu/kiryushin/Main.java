@@ -138,6 +138,11 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Launches the JavaFX application.
+     *
+     * @param args command-line arguments forwarded to {@link Application#launch}
+     */
     public static void main(String[] args) {
         launch(args);
     }

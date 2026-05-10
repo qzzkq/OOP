@@ -50,8 +50,10 @@ loadScripts(document, 'script');</script>
 <h1 class="title">Hierarchy For All Packages</h1>
 <span class="package-hierarchy-label">Package Hierarchies:</span>
 <ul class="horizontal">
-<li><a href="ru/nsu/kiryushin/package-tree.html">ru.nsu.kiryushin</a>, </li>
-<li><a href="ru/nsu/kiryushin/food/package-tree.html">ru.nsu.kiryushin.food</a></li>
+<li><a href="ru/nsu/kiryushin/controller/package-tree.html">ru.nsu.kiryushin.controller</a>, </li>
+<li><a href="ru/nsu/kiryushin/model/package-tree.html">ru.nsu.kiryushin.model</a>, </li>
+<li><a href="ru/nsu/kiryushin/model/food/package-tree.html">ru.nsu.kiryushin.model.food</a>, </li>
+<li><a href="ru/nsu/kiryushin/view/package-tree.html">ru.nsu.kiryushin.view</a></li>
 </ul>
 </div>
 <section class="hierarchy">
@@ -59,24 +61,29 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" class="type-name-link external-link" title="class or interface in java.lang">Object</a>
 <ul>
-<li class="circle">ru.nsu.kiryushin.food.<a href="ru/nsu/kiryushin/food/Apple.html" class="type-name-link" title="class in ru.nsu.kiryushin.food">Apple</a> (implements ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Food.html" title="interface in ru.nsu.kiryushin">Food</a>)</li>
+<li class="circle">ru.nsu.kiryushin.model.<a href="ru/nsu/kiryushin/model/AbstractFood.html" class="type-name-link" title="class in ru.nsu.kiryushin.model">AbstractFood</a> (implements ru.nsu.kiryushin.model.<a href="ru/nsu/kiryushin/model/Food.html" title="interface in ru.nsu.kiryushin.model">Food</a>)
+<ul>
+<li class="circle">ru.nsu.kiryushin.model.food.<a href="ru/nsu/kiryushin/model/food/Apple.html" class="type-name-link" title="class in ru.nsu.kiryushin.model.food">Apple</a></li>
+<li class="circle">ru.nsu.kiryushin.model.food.<a href="ru/nsu/kiryushin/model/food/Booster.html" class="type-name-link" title="class in ru.nsu.kiryushin.model.food">Booster</a></li>
+<li class="circle">ru.nsu.kiryushin.model.food.<a href="ru/nsu/kiryushin/model/food/Chili.html" class="type-name-link" title="class in ru.nsu.kiryushin.model.food">Chili</a></li>
+<li class="circle">ru.nsu.kiryushin.model.food.<a href="ru/nsu/kiryushin/model/food/Ice.html" class="type-name-link" title="class in ru.nsu.kiryushin.model.food">Ice</a></li>
+</ul>
+</li>
 <li class="circle">javafx.application.Application
 <ul>
-<li class="circle">ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Main.html" class="type-name-link" title="class in ru.nsu.kiryushin">Main</a></li>
+<li class="circle">ru.nsu.kiryushin.view.<a href="ru/nsu/kiryushin/view/Main.html" class="type-name-link" title="class in ru.nsu.kiryushin.view">Main</a></li>
 </ul>
 </li>
-<li class="circle">ru.nsu.kiryushin.food.<a href="ru/nsu/kiryushin/food/Booster.html" class="type-name-link" title="class in ru.nsu.kiryushin.food">Booster</a> (implements ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Food.html" title="interface in ru.nsu.kiryushin">Food</a>)</li>
-<li class="circle">ru.nsu.kiryushin.food.<a href="ru/nsu/kiryushin/food/Chili.html" class="type-name-link" title="class in ru.nsu.kiryushin.food">Chili</a> (implements ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Food.html" title="interface in ru.nsu.kiryushin">Food</a>)</li>
-<li class="circle">ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/FoodRegistry.html" class="type-name-link" title="class in ru.nsu.kiryushin">FoodRegistry</a></li>
-<li class="circle">ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Game.html" class="type-name-link" title="class in ru.nsu.kiryushin">Game</a></li>
-<li class="circle">ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/GameController.html" class="type-name-link" title="class in ru.nsu.kiryushin">GameController</a></li>
-<li class="circle">ru.nsu.kiryushin.food.<a href="ru/nsu/kiryushin/food/Ice.html" class="type-name-link" title="class in ru.nsu.kiryushin.food">Ice</a> (implements ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Food.html" title="interface in ru.nsu.kiryushin">Food</a>)</li>
+<li class="circle">ru.nsu.kiryushin.model.<a href="ru/nsu/kiryushin/model/FoodRegistry.html" class="type-name-link" title="class in ru.nsu.kiryushin.model">FoodRegistry</a></li>
+<li class="circle">ru.nsu.kiryushin.model.<a href="ru/nsu/kiryushin/model/Game.html" class="type-name-link" title="class in ru.nsu.kiryushin.model">Game</a></li>
+<li class="circle">ru.nsu.kiryushin.controller.<a href="ru/nsu/kiryushin/controller/GameController.html" class="type-name-link" title="class in ru.nsu.kiryushin.controller">GameController</a></li>
+<li class="circle">ru.nsu.kiryushin.view.<a href="ru/nsu/kiryushin/view/GameView.html" class="type-name-link" title="class in ru.nsu.kiryushin.view">GameView</a></li>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Record.html" class="type-name-link external-link" title="class or interface in java.lang">Record</a>
 <ul>
-<li class="circle">ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Point.html" class="type-name-link" title="class in ru.nsu.kiryushin">Point</a></li>
+<li class="circle">ru.nsu.kiryushin.model.<a href="ru/nsu/kiryushin/model/Point.html" class="type-name-link" title="class in ru.nsu.kiryushin.model">Point</a></li>
 </ul>
 </li>
-<li class="circle">ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Snake.html" class="type-name-link" title="class in ru.nsu.kiryushin">Snake</a></li>
+<li class="circle">ru.nsu.kiryushin.model.<a href="ru/nsu/kiryushin/model/Snake.html" class="type-name-link" title="class in ru.nsu.kiryushin.model">Snake</a></li>
 </ul>
 </li>
 </ul>
@@ -84,13 +91,7 @@ loadScripts(document, 'script');</script>
 <section class="hierarchy">
 <h2 title="Interface Hierarchy">Interface Hierarchy</h2>
 <ul>
-<li class="circle">ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Food.html" class="type-name-link" title="interface in ru.nsu.kiryushin">Food</a></li>
-</ul>
-</section>
-<section class="hierarchy">
-<h2 title="Annotation Interface Hierarchy">Annotation Interface Hierarchy</h2>
-<ul>
-<li class="circle">ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/SpawnWeight.html" class="type-name-link" title="annotation interface in ru.nsu.kiryushin">SpawnWeight</a> (implements java.lang.annotation.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/annotation/Annotation.html" title="class or interface in java.lang.annotation" class="external-link">Annotation</a>)</li>
+<li class="circle">ru.nsu.kiryushin.model.<a href="ru/nsu/kiryushin/model/Food.html" class="type-name-link" title="interface in ru.nsu.kiryushin.model">Food</a></li>
 </ul>
 </section>
 <section class="hierarchy">
@@ -100,8 +101,8 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Enum.html" class="type-name-link external-link" title="class or interface in java.lang">Enum</a>&lt;E&gt; (implements java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html" title="class or interface in java.lang" class="external-link">Comparable</a>&lt;T&gt;, java.lang.constant.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/constant/Constable.html" title="class or interface in java.lang.constant" class="external-link">Constable</a>, java.io.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a>)
 <ul>
-<li class="circle">ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/Direction.html" class="type-name-link" title="enum class in ru.nsu.kiryushin">Direction</a></li>
-<li class="circle">ru.nsu.kiryushin.<a href="ru/nsu/kiryushin/GameState.html" class="type-name-link" title="enum class in ru.nsu.kiryushin">GameState</a></li>
+<li class="circle">ru.nsu.kiryushin.model.<a href="ru/nsu/kiryushin/model/Direction.html" class="type-name-link" title="enum class in ru.nsu.kiryushin.model">Direction</a></li>
+<li class="circle">ru.nsu.kiryushin.model.<a href="ru/nsu/kiryushin/model/GameState.html" class="type-name-link" title="enum class in ru.nsu.kiryushin.model">GameState</a></li>
 </ul>
 </li>
 </ul>

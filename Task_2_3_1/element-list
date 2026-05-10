@@ -1,2 +1,4 @@
-ru.nsu.kiryushin
-ru.nsu.kiryushin.food
+ru.nsu.kiryushin.controller
+ru.nsu.kiryushin.model
+ru.nsu.kiryushin.model.food
+ru.nsu.kiryushin.view

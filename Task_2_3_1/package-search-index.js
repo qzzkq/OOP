@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.kiryushin"},{"l":"ru.nsu.kiryushin.food"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.kiryushin.controller"},{"l":"ru.nsu.kiryushin.model"},{"l":"ru.nsu.kiryushin.model.food"},{"l":"ru.nsu.kiryushin.view"}];updateSearchResults();

@@ -5,21 +5,21 @@
 <title>FoodRegistry (Task_2_3_1 1.0-SNAPSHOT API)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="declaration: package: ru.nsu.kiryushin, class: FoodRegistry">
+<meta name="description" content="declaration: package: ru.nsu.kiryushin.model, class: FoodRegistry">
 <meta name="generator" content="javadoc/ClassWriterImpl">
-<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../script-dir/jquery-ui.min.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../jquery-ui.overrides.css" title="Style">
-<script type="text/javascript" src="../../../script.js"></script>
-<script type="text/javascript" src="../../../script-dir/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="../../../script-dir/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../script-dir/jquery-ui.min.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../jquery-ui.overrides.css" title="Style">
+<script type="text/javascript" src="../../../../script.js"></script>
+<script type="text/javascript" src="../../../../script-dir/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
 <script type="text/javascript">var evenRowColor = "even-row-color";
 var oddRowColor = "odd-row-color";
 var tableTab = "table-tab";
 var activeTableTab = "active-table-tab";
-var pathtoroot = "../../../";
+var pathtoroot = "../../../../";
 loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -31,12 +31,12 @@ loadScripts(document, 'script');</script>
 <div class="top-nav" id="navbar-top">
 <div class="skip-nav"><a href="#skip-navbar-top" title="Skip navigation links">Skip navigation links</a></div>
 <ul id="navbar-top-firstrow" class="nav-list" title="Navigation">
-<li><a href="../../../index.html">Overview</a></li>
+<li><a href="../../../../index.html">Overview</a></li>
 <li><a href="package-summary.html">Package</a></li>
 <li class="nav-bar-cell1-rev">Class</li>
 <li><a href="package-tree.html">Tree</a></li>
-<li><a href="../../../index-all.html">Index</a></li>
-<li><a href="../../../help-doc.html#class">Help</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+<li><a href="../../../../help-doc.html#class">Help</a></li>
 </ul>
 </div>
 <div class="sub-nav">
@@ -67,17 +67,18 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.kiryushin</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">ru.nsu.kiryushin.model</a></div>
 <h1 title="Class FoodRegistry" class="title">Class FoodRegistry</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">ru.nsu.kiryushin.FoodRegistry</div>
+<div class="inheritance">ru.nsu.kiryushin.model.FoodRegistry</div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">FoodRegistry</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Discovers all concrete <a href="Food.html" title="interface in ru.nsu.kiryushin"><code>Food</code></a> implementations at runtime and creates instances by weighted random selection.</div>
+<div class="block">Discovers all concrete <a href="Food.html" title="interface in ru.nsu.kiryushin.model"><code>Food</code></a> implementations at runtime and creates instances by weighted random selection.
+ Each food's spawn weight is read from a probe instance via <a href="Food.html#getSpawnWeight()"><code>Food.getSpawnWeight()</code></a>.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -105,18 +106,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="Food.html" title="interface in ru.nsu.kiryushin">Food</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#createRandom(ru.nsu.kiryushin.Point)" class="member-name-link">createRandom</a><wbr>(<a href="Point.html" title="class in ru.nsu.kiryushin">Point</a>&nbsp;position)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="Food.html" title="interface in ru.nsu.kiryushin.model">Food</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#createRandom(ru.nsu.kiryushin.model.Point)" class="member-name-link">createRandom</a><wbr>(<a href="Point.html" title="class in ru.nsu.kiryushin.model">Point</a>&nbsp;position)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Creates a random food item at the given position, respecting each type's <a href="SpawnWeight.html" title="annotation interface in ru.nsu.kiryushin"><code>SpawnWeight</code></a>.</div>
+<div class="block">Creates a random food item at the given position, with each type chosen by its
+ <a href="Food.html#getSpawnWeight()"><code>spawn weight</code></a>.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="Food.html" title="interface in ru.nsu.kiryushin">Food</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#createSpecific(java.lang.Class,ru.nsu.kiryushin.Point)" class="member-name-link">createSpecific</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="Food.html" title="interface in ru.nsu.kiryushin">Food</a>&gt;&nbsp;clazz,
- <a href="Point.html" title="class in ru.nsu.kiryushin">Point</a>&nbsp;position)</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="Food.html" title="interface in ru.nsu.kiryushin.model">Food</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#createSpecific(java.lang.Class,ru.nsu.kiryushin.model.Point)" class="member-name-link">createSpecific</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="Food.html" title="interface in ru.nsu.kiryushin.model">Food</a>&gt;&nbsp;clazz,
+ <a href="Point.html" title="class in ru.nsu.kiryushin.model">Point</a>&nbsp;position)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Creates an instance of a specific food type at the given position.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="Food.html" title="interface in ru.nsu.kiryushin">Food</a>&gt;&gt;</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="Food.html" title="interface in ru.nsu.kiryushin.model">Food</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getAllFoodTypes()" class="member-name-link">getAllFoodTypes</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Returns an unmodifiable view of all discovered concrete food types.</div>
@@ -153,10 +155,11 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="createRandom(ru.nsu.kiryushin.Point)">
+<section class="detail" id="createRandom(ru.nsu.kiryushin.model.Point)">
 <h3>createRandom</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="Food.html" title="interface in ru.nsu.kiryushin">Food</a></span>&nbsp;<span class="element-name">createRandom</span><wbr><span class="parameters">(<a href="Point.html" title="class in ru.nsu.kiryushin">Point</a>&nbsp;position)</span></div>
-<div class="block">Creates a random food item at the given position, respecting each type's <a href="SpawnWeight.html" title="annotation interface in ru.nsu.kiryushin"><code>SpawnWeight</code></a>.</div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="Food.html" title="interface in ru.nsu.kiryushin.model">Food</a></span>&nbsp;<span class="element-name">createRandom</span><wbr><span class="parameters">(<a href="Point.html" title="class in ru.nsu.kiryushin.model">Point</a>&nbsp;position)</span></div>
+<div class="block">Creates a random food item at the given position, with each type chosen by its
+ <a href="Food.html#getSpawnWeight()"><code>spawn weight</code></a>.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>position</code> - board cell where the food will be placed</dd>
@@ -166,10 +169,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="createSpecific(java.lang.Class,ru.nsu.kiryushin.Point)">
+<section class="detail" id="createSpecific(java.lang.Class,ru.nsu.kiryushin.model.Point)">
 <h3>createSpecific</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="Food.html" title="interface in ru.nsu.kiryushin">Food</a></span>&nbsp;<span class="element-name">createSpecific</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="Food.html" title="interface in ru.nsu.kiryushin">Food</a>&gt;&nbsp;clazz,
- <a href="Point.html" title="class in ru.nsu.kiryushin">Point</a>&nbsp;position)</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="Food.html" title="interface in ru.nsu.kiryushin.model">Food</a></span>&nbsp;<span class="element-name">createSpecific</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="Food.html" title="interface in ru.nsu.kiryushin.model">Food</a>&gt;&nbsp;clazz,
+ <a href="Point.html" title="class in ru.nsu.kiryushin.model">Point</a>&nbsp;position)</span></div>
 <div class="block">Creates an instance of a specific food type at the given position.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -183,7 +186,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getAllFoodTypes()">
 <h3>getAllFoodTypes</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="Food.html" title="interface in ru.nsu.kiryushin">Food</a>&gt;&gt;</span>&nbsp;<span class="element-name">getAllFoodTypes</span>()</div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;? extends <a href="Food.html" title="interface in ru.nsu.kiryushin.model">Food</a>&gt;&gt;</span>&nbsp;<span class="element-name">getAllFoodTypes</span>()</div>
 <div class="block">Returns an unmodifiable view of all discovered concrete food types.</div>
 <dl class="notes">
 <dt>Returns:</dt>

@@ -1,9 +1,9 @@
-package ru.nsu.kiryushin;
+package ru.nsu.kiryushin.model;
 
-import ru.nsu.kiryushin.food.Apple;
-import ru.nsu.kiryushin.food.Booster;
-import ru.nsu.kiryushin.food.Chili;
-import ru.nsu.kiryushin.food.Ice;
+import ru.nsu.kiryushin.model.food.Apple;
+import ru.nsu.kiryushin.model.food.Booster;
+import ru.nsu.kiryushin.model.food.Chili;
+import ru.nsu.kiryushin.model.food.Ice;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package ru.nsu.kiryushin;
+package ru.nsu.kiryushin.view;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import com.fazecast.jSerialComm.SerialPort;
+import ru.nsu.kiryushin.model.Direction;
 
 import java.util.Optional;
 
@@ -24,7 +25,8 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/scene.fxml"));
         Parent root = loader.load();
 
-        GameController controller = loader.getController();
+        GameView controller = loader.getController();
+        controller.setTitleUpdater(primaryStage::setTitle);
         Scene scene = new Scene(root);
 
         primaryStage.setTitle("Snake Game");
@@ -72,7 +74,7 @@ public class Main extends Application {
      * @param scene scene to attach the key listener to
      * @param controller game controller to receive direction events
      */
-    private void setupKeyboardInput(Scene scene, GameController controller) {
+    private void setupKeyboardInput(Scene scene, GameView controller) {
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case W, UP    -> controller.handleInput(Direction.UP);
@@ -90,7 +92,7 @@ public class Main extends Application {
      * @param controller game controller to receive direction events
      * @param port serial port to open
      */
-    private void setupArduinoInput(GameController controller, SerialPort port) {
+    private void setupArduinoInput(GameView controller, SerialPort port) {
         arduinoPort = port;
         arduinoPort.setBaudRate(9600);
 

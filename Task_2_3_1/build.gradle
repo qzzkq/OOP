@@ -21,7 +21,7 @@ javafx {
 }
 
 application {
-    mainClass = 'ru.nsu.kiryushin.Main'
+    mainClass = 'ru.nsu.kiryushin.view.Main'
 }
 
 repositories {
@@ -52,6 +52,13 @@ tasks.register('generateUml', Exec) {
 jacocoTestReport {
     reports {
         xml.required = true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                'ru/nsu/kiryushin/view/**'
+            ])
+        }))
     }
 }
 

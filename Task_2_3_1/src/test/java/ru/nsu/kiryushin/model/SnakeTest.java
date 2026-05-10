@@ -1,4 +1,4 @@
-package ru.nsu.kiryushin;
+package ru.nsu.kiryushin.model;
 
 import org.junit.jupiter.api.Test;
 

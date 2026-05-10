@@ -1,4 +1,4 @@
-package ru.nsu.kiryushin;
+package ru.nsu.kiryushin.model;
 
 /**
  * Cardinal directions for snake movement.

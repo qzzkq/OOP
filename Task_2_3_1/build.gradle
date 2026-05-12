@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'idea'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = 'ru.nsu.kiryushin'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+javafx {
+    version = "21"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+application {
+    mainClass = 'ru.nsu.kiryushin.view.Main'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
+    implementation 'org.reflections:reflections:0.10.2'
+    implementation 'com.fazecast:jSerialComm:2.10.3'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.register('generateUml', Exec) {
+    group = 'documentation'
+    description = 'Generates PlantUML class diagram from Java sources.'
+    commandLine 'python3', 'scripts/generate_uml.py',
+            '--src', 'src/main/java',
+            '--output', 'docs/pizzeria-class-diagram.puml',
+            '--title', 'Pizzeria Class Diagram'
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                'ru/nsu/kiryushin/view/**'
+            ])
+        }))
+    }
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
